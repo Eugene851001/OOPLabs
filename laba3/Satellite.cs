@@ -32,7 +32,7 @@ namespace Universe
 
         public Satellite(): base()
         {
-            
+            MainPlanet = new Planet();
         }
 
         public void AddToParent()
@@ -54,6 +54,5 @@ namespace Universe
         {
            
         }
-
     }
 }

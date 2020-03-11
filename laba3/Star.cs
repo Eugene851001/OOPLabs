@@ -20,7 +20,6 @@ namespace Universe
         }
         private List<Planet> planets;
 
-        [System.Runtime.Serialization.OnSerializing()]
         public void CleanList()
         {
             planets.Clear();

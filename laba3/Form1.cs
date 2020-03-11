@@ -16,7 +16,6 @@ namespace OOPLaba3
 {
     public partial class frmMain : Form
     { 
-        List<AstronomicalObject> astroObjects;
         Dictionary<int, EditObject> astroEditors;
         public Dictionary<int, EditObject> astroHashEditors;
 
@@ -25,7 +24,6 @@ namespace OOPLaba3
         public frmMain()  
         {
             InitializeComponent();
-            astroObjects = new List<AstronomicalObject>();
             astroEditors = new Dictionary<int, EditObject>();//uid-editor
             astroService = new Service();
             astroHashEditors = new Dictionary<int, EditObject>();
@@ -33,12 +31,13 @@ namespace OOPLaba3
             astroHashEditors.Add(1, EditStar);
             astroHashEditors.Add(2, EditPlanet);
             astroHashEditors.Add(3, EditSatellite);
+            tbFilePath.Text = astroService.FileName;
         }
 
         public void UpdateListBox()
         {
             lbStars.Items.Clear();
-            foreach(AstronomicalObject item in astroObjects)
+            foreach(AstronomicalObject item in astroService.astroObjects)
             {
                 if (item != null)
                     lbStars.Items.Add(item);
@@ -54,9 +53,9 @@ namespace OOPLaba3
                 {
                     UpdateObjectList((AstronomicalObject)item[i]);
                 }
-                if (obj.uid > astroObjects[astroObjects.Count - 1].uid)
+                if (obj.uid > astroService.astroObjects[astroService.astroObjects.Count - 1].uid)
                 {
-                    astroObjects.Add(obj);
+                    astroService.astroObjects.Add(obj);
                 }
             }
         }
@@ -88,18 +87,19 @@ namespace OOPLaba3
         public void UpdateObjects()
         {
             int counter = 0;
-            while(counter < astroObjects.Count)
+            while(counter < astroService.astroObjects.Count)
             {
-                AstronomicalObject item = astroObjects[counter];
+                AstronomicalObject item = astroService.astroObjects[counter];
                 if (item != null && item.IsDestroy)
                 {
-                    astroObjects.Remove(item);
+                    astroService.astroObjects.Remove(item);
                 }
                 else
                 {
                     counter++;
                 }
             }
+            //astroService.UpdateObjects();
             UpdateListBox();
         }
 
@@ -124,69 +124,17 @@ namespace OOPLaba3
             g.FillRectangle(new SolidBrush(Color.White), this.ClientRectangle);
         }
 
-        private void btSerialize_Click(object sender, EventArgs e)
-        {
-            FileStream fout;
-            if (SaveFile.ShowDialog() == DialogResult.OK)
-            {
-                string FileName = SaveFile.FileName;
-                fout = new FileStream(FileName,  FileMode.Create);
-                try
-                {
-                    SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
-                    XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo));
-                    formatter.Serialize(fout, info);
-                }
-                finally
-                {
-                    fout.Close();
-                }
-            }
-        }
 
         AstronomicalObject GetParent(int uid)
         {
             bool IsFound = false;
             int i;
-            for (i = 0; !IsFound && i < astroObjects.Count; i++)
+            for (i = 0; !IsFound && i < astroService.astroObjects.Count; i++)
             {
-                if (astroObjects[i].uid == uid)
+                if (astroService.astroObjects[i].uid == uid)
                     IsFound = true;
             }
-            return astroObjects[i - 1];
-        }
-
-        private void btDeserialize_Click(object sender, EventArgs e)
-        {
-            FileStream fin;
-            if (OpenFile.ShowDialog() == DialogResult.OK)
-            {
-                string FileName = OpenFile.FileName;
-
-                fin = new FileStream(FileName, FileMode.Open);
-                try
-                {
-                    SaveInfo info;
-                    XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo));
-                    info = (SaveInfo)formatter.Deserialize(fin);
-                    astroEditors = info.GetAstroEditors(astroHashEditors);
-                    astroObjects = info.AstroObjects;
-                }
-                finally
-                {
-                    fin.Close();
-                }
-            }
-            for (int i = 0; i < astroObjects.Count; i++)
-            {              
-                if (astroObjects[i] is IParticle)
-                {
-                    var item = astroObjects[i] as IParticle;
-                    item.MainObject = GetParent(item.MainObject.uid);   
-                    item.AddToParent();
-                }
-            }
-            UpdateListBox();
+            return astroService.astroObjects[i - 1];
         }
          
 
@@ -210,8 +158,9 @@ namespace OOPLaba3
         {
             if (lbStars.SelectedIndex != -1)
             {
-                astroService.Remove((AstronomicalObject)lbStars.SelectedItem);
-                DeleteObject((AstronomicalObject)lbStars.SelectedItem);
+                astroService.Remove((AstronomicalObject)lbStars.SelectedItem, astroEditors, astroHashEditors);
+             //   DeleteObject((AstronomicalObject)lbStars.SelectedItem);
+                UpdateListBox();
                 UpdateObjects();
             }
         }
@@ -219,8 +168,7 @@ namespace OOPLaba3
         void AddNewAstroObject(AstronomicalObject obj)
         {
             astroEditors[obj.uid](obj);
-            astroObjects.Add(obj);
-            astroService.Add(obj);
+            astroService.Add(obj, astroEditors, astroHashEditors);
             UpdateObjectList(obj);
             UpdateListBox();
         }
@@ -240,7 +188,7 @@ namespace OOPLaba3
 
         public void EditPlanet(AstronomicalObject obj)
         {
-            frmEditPlanet frmEdit = new frmEditPlanet((Planet)obj, astroObjects);
+            frmEditPlanet frmEdit = new frmEditPlanet((Planet)obj, astroService.astroObjects);
             frmEdit.ShowDialog();
         }
 
@@ -253,10 +201,21 @@ namespace OOPLaba3
 
         public void EditSatellite(AstronomicalObject obj)
         {
-            frmEditSatellite frmEdit = new frmEditSatellite((Satellite)obj, astroObjects);
+            frmEditSatellite frmEdit = new frmEditSatellite((Satellite)obj, astroService.astroObjects);
             frmEdit.ShowDialog();
         }
 
+        public void EditBlackHole(AstronomicalObject obj)
+        {
+            frmEditBlackHole frmEdit = new frmEditBlackHole((BlackHole)obj);
+            frmEdit.ShowDialog();
+        }
+
+        public void EditVariableStar(AstronomicalObject obj)
+        {
+            frmEditVariableStar frmEdit = new frmEditVariableStar((VariableStar)obj);
+            frmEdit.ShowDialog();
+        }
         private void btPlanet_Click(object sender, EventArgs e)
         {
             Planet planet = new Planet();
@@ -269,6 +228,42 @@ namespace OOPLaba3
             Satellite satellite = new Satellite();
             astroEditors.Add(satellite.uid, EditSatellite);
             AddNewAstroObject(satellite);
+        }
+
+        private void btBlackHole_Click(object sender, EventArgs e)
+        {
+            BlackHole blackHole = new BlackHole();
+            astroEditors.Add(blackHole.uid, EditBlackHole);
+            AddNewAstroObject(blackHole);
+        }
+
+        private void btVariableStar_Click(object sender, EventArgs e)
+        {
+            VariableStar star = new VariableStar();
+            astroEditors.Add(star.uid, EditVariableStar);
+            AddNewAstroObject(star);
+        }
+
+        private void OpenFile_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btChangeFile_Click(object sender, EventArgs e)
+        {
+            if (OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = OpenFile.FileName;
+                astroService.ChangeFileName(fileName);
+                tbFilePath.Text = astroService.FileName;
+            }
+        }
+
+        private void btLoadAll_Click(object sender, EventArgs e)
+        {
+            SaveInfo info =  astroService.GetAll();
+            astroEditors = info.GetAstroEditors(astroHashEditors);
+            UpdateListBox();
         }
     }
 }

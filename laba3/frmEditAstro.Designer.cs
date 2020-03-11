@@ -36,6 +36,8 @@
             this.lbMass = new System.Windows.Forms.Label();
             this.tbX = new System.Windows.Forms.TextBox();
             this.tbY = new System.Windows.Forms.TextBox();
+            this.tbSize = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbName
@@ -105,11 +107,31 @@
             this.tbY.Size = new System.Drawing.Size(34, 22);
             this.tbY.TabIndex = 8;
             // 
+            // tbSize
+            // 
+            this.tbSize.AccessibleDescription = "ed";
+            this.tbSize.Location = new System.Drawing.Point(297, 109);
+            this.tbSize.Name = "tbSize";
+            this.tbSize.Size = new System.Drawing.Size(100, 22);
+            this.tbSize.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(245, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Radius";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // frmEditAstro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 399);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbSize);
             this.Controls.Add(this.tbY);
             this.Controls.Add(this.tbX);
             this.Controls.Add(this.lbMass);
@@ -137,5 +159,7 @@
         private System.Windows.Forms.Label lbMass;
         private System.Windows.Forms.TextBox tbX;
         private System.Windows.Forms.TextBox tbY;
+        private System.Windows.Forms.TextBox tbSize;
+        private System.Windows.Forms.Label label1;
     }
 }

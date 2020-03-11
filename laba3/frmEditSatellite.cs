@@ -30,6 +30,9 @@ namespace OOPLaba3
                     cbPlanet.Items.Add(item);
                 }
             }
+
+            cbPlanet.SelectedIndex = cbPlanet.Items.IndexOf(satellite.MainObject);
+
         }
 
         public new void ApplyChanges()

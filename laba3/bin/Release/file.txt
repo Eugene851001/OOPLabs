@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<SaveInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AstroObjects>
+    <AstronomicalObject xsi:type="Star">
+      <Name>Sun</Name>
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>0</uid>
+      <Temperature>0</Temperature>
+    </AstronomicalObject>
+  </AstroObjects>
+  <AstroObjectsEditors>
+    <KeyValuePairOfInt32Int32 />
+  </AstroObjectsEditors>
+</SaveInfo>

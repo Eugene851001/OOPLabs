@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AstronomicalObject.cs" />
+    <Compile Include="BlackHole.cs" />
     <Compile Include="DrawUniverse.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -59,6 +60,12 @@
     </Compile>
     <Compile Include="frmEditAstro.Designer.cs">
       <DependentUpon>frmEditAstro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditBlackHole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditBlackHole.Designer.cs">
+      <DependentUpon>frmEditBlackHole.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEditPlanet.cs">
       <SubType>Form</SubType>
@@ -78,21 +85,33 @@
     <Compile Include="frmEditStar.Designer.cs">
       <DependentUpon>frmEditStar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditVariableStar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditVariableStar.Designer.cs">
+      <DependentUpon>frmEditVariableStar.cs</DependentUpon>
+    </Compile>
     <Compile Include="IComplex.cs" />
     <Compile Include="IParticle.cs" />
+    <Compile Include="ISerialize.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Satellite.cs" />
     <Compile Include="SaveInfo.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="VariableStar.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditAstro.resx">
       <DependentUpon>frmEditAstro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditBlackHole.resx">
+      <DependentUpon>frmEditBlackHole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditPlanet.resx">
       <DependentUpon>frmEditPlanet.cs</DependentUpon>
@@ -102,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditStar.resx">
       <DependentUpon>frmEditStar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditVariableStar.resx">
+      <DependentUpon>frmEditVariableStar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

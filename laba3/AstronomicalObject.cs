@@ -22,6 +22,8 @@ namespace Universe
     [XmlInclude(typeof(Satellite))]
     [XmlInclude(typeof(Planet))]
     [XmlInclude(typeof(Star))]
+    [XmlInclude(typeof(BlackHole))]
+    [XmlInclude(typeof(VariableStar))]
     public class AstronomicalObject
     {
         public string Name;

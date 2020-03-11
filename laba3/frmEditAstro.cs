@@ -28,6 +28,7 @@ namespace OOPLaba3
             tbX.Text = astro.Position.X.ToString();
             tbY.Text = astro.Position.Y.ToString();
             tbMass.Text = astro.Mass.ToString();
+            tbSize.Text = astro.Size.ToString();
         }
 
         public frmEditAstro(AstronomicalObject astro)
@@ -53,6 +54,7 @@ namespace OOPLaba3
             astro.Name = tbName.Text;
             astro.Position = new Universe.Point(double.Parse(tbX.Text), double.Parse(tbY.Text));
             astro.Mass = double.Parse(tbMass.Text);
+            astro.Size = double.Parse(tbSize.Text);
         }
 
         public virtual void btOk_Click(object sender, EventArgs e)
@@ -62,6 +64,11 @@ namespace OOPLaba3
         }
 
         private void tbX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

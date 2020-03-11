@@ -1,0 +1,28 @@
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.exe.config
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.exe
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.pdb
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.csprojAssemblyReference.cache
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.Properties.Resources.resources
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.csproj.GenerateResource.cache
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.exe
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.pdb
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditAstro.resources
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditPlanet.resources
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditStar.resources
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmMain.resources
+C:\Users\evgeny\Desktop\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditSatellite.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.csprojAssemblyReference.cache
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmMain.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditAstro.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditPlanet.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditSatellite.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditStar.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.Properties.Resources.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.csproj.GenerateResource.cache
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.exe
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.pdb
+E:\4 сем\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.exe.config
+E:\4 сем\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.exe
+E:\4 сем\ООП\3.1\OOPLaba3\bin\Debug\OOPLaba3.pdb
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditBlackHole.resources
+E:\4 сем\ООП\3.1\OOPLaba3\obj\Debug\OOPLaba3.frmEditVariableStar.resources

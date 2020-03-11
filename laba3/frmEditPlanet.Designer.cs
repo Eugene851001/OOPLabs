@@ -31,7 +31,6 @@
             this.lbSatellites = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btEditStar = new System.Windows.Forms.Button();
             this.cbStars = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -63,15 +62,6 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Star:";
             // 
-            // btEditStar
-            // 
-            this.btEditStar.Location = new System.Drawing.Point(256, 161);
-            this.btEditStar.Name = "btEditStar";
-            this.btEditStar.Size = new System.Drawing.Size(65, 23);
-            this.btEditStar.TabIndex = 14;
-            this.btEditStar.Text = "Edit";
-            this.btEditStar.UseVisualStyleBackColor = true;
-            // 
             // cbStars
             // 
             this.cbStars.FormattingEnabled = true;
@@ -86,7 +76,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 450);
             this.Controls.Add(this.cbStars);
-            this.Controls.Add(this.btEditStar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbSatellites);
@@ -96,7 +85,6 @@
             this.Controls.SetChildIndex(this.lbSatellites, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.btEditStar, 0);
             this.Controls.SetChildIndex(this.cbStars, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,7 +96,6 @@
         private System.Windows.Forms.ListBox lbSatellites;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btEditStar;
         private System.Windows.Forms.ComboBox cbStars;
     }
 }
