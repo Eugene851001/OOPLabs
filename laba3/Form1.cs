@@ -51,56 +51,13 @@ namespace OOPLaba3
                 var item = obj as IComplexObj;
                 for (int i = 0; i < item.Count; i++)
                 {
-                    UpdateObjectList((AstronomicalObject)item[i]);
+                    astroService.UpdateObjectList((AstronomicalObject)item[i]);
                 }
                 if (obj.uid > astroService.astroObjects[astroService.astroObjects.Count - 1].uid)
                 {
                     astroService.astroObjects.Add(obj);
                 }
             }
-        }
-
-        public void HelpDeleteObject(AstronomicalObject astroObject)
-        {
-            if (astroObject is IComplexObj)
-            {
-                var item = astroObject as IComplexObj;
-                for (int i = 0; i < item.Count; i++)
-                {
-                    HelpDeleteObject((AstronomicalObject)item[i]);
-                }
-            }
-            astroObject.IsDestroy = true;
-        }
-
-        public void DeleteObject(AstronomicalObject astroObject)
-        {
-            if (astroObject is IParticle)
-            {
-                var item = astroObject as IParticle;
-                item.RemoveFromParent();
-            }
-            HelpDeleteObject(astroObject);
-           
-        }
-
-        public void UpdateObjects()
-        {
-            int counter = 0;
-            while(counter < astroService.astroObjects.Count)
-            {
-                AstronomicalObject item = astroService.astroObjects[counter];
-                if (item != null && item.IsDestroy)
-                {
-                    astroService.astroObjects.Remove(item);
-                }
-                else
-                {
-                    counter++;
-                }
-            }
-            //astroService.UpdateObjects();
-            UpdateListBox();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -144,7 +101,7 @@ namespace OOPLaba3
             {
                 AstronomicalObject obj = (AstronomicalObject)lbStars.SelectedItem;
                 astroEditors[obj.uid](obj);
-                UpdateObjectList(obj);
+                astroService.UpdateObjectList(obj);
                 UpdateListBox();
             }
         }
@@ -152,16 +109,14 @@ namespace OOPLaba3
         private void lbStars_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
+        } 
 
         private void btDelete_Click(object sender, EventArgs e)
         {
             if (lbStars.SelectedIndex != -1)
             {
                 astroService.Remove((AstronomicalObject)lbStars.SelectedItem, astroEditors, astroHashEditors);
-             //   DeleteObject((AstronomicalObject)lbStars.SelectedItem);
                 UpdateListBox();
-                UpdateObjects();
             }
         }
 
@@ -169,7 +124,8 @@ namespace OOPLaba3
         {
             astroEditors[obj.uid](obj);
             astroService.Add(obj, astroEditors, astroHashEditors);
-            UpdateObjectList(obj);
+            //UpdateObjectList(obj);
+            astroService.UpdateObjectList(obj);
             UpdateListBox();
         }
 

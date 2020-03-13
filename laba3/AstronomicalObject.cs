@@ -50,11 +50,7 @@ namespace Universe
             Size = size;
             uid = UidCounter++;
         }
-
-        public virtual void Draw(Graphics g, ViewInfo info)
-        {
-
-        }
+        
 
         public override string ToString()
         {

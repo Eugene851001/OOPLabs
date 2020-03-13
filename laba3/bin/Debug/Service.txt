@@ -2,7 +2,7 @@
 <SaveInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AstroObjects>
     <AstronomicalObject xsi:type="Star">
-      <Name>SUn</Name>
+      <Name>Sun</Name>
       <Position>
         <X>0</X>
         <Y>0</Y>
@@ -13,8 +13,8 @@
       <uid>0</uid>
       <Temperature>0</Temperature>
     </AstronomicalObject>
-    <AstronomicalObject xsi:type="Star">
-      <Name>Betelgeizse</Name>
+    <AstronomicalObject xsi:type="Planet">
+      <Name>Earth</Name>
       <Position>
         <X>0</X>
         <Y>0</Y>
@@ -22,19 +22,20 @@
       <Mass>0</Mass>
       <IsDestroy>false</IsDestroy>
       <Size>0</Size>
-      <uid>8</uid>
-      <Temperature>0</Temperature>
-    </AstronomicalObject>
-    <AstronomicalObject xsi:type="BlackHole">
-      <Name />
-      <Position>
-        <X>0</X>
-        <Y>0</Y>
-      </Position>
-      <Mass>0</Mass>
-      <IsDestroy>false</IsDestroy>
-      <Size>0</Size>
-      <uid>14</uid>
+      <uid>2</uid>
+      <albedo>0</albedo>
+      <MainObject xsi:type="Star">
+        <Name>Sun</Name>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <Mass>0</Mass>
+        <IsDestroy>false</IsDestroy>
+        <Size>0</Size>
+        <uid>0</uid>
+        <Temperature>0</Temperature>
+      </MainObject>
     </AstronomicalObject>
   </AstroObjects>
   <AstroObjectsEditors>
@@ -44,18 +45,6 @@
     </UidHash>
     <UidHash>
       <Uid>2</Uid>
-      <Hash>2</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>5</Uid>
-      <Hash>3</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>8</Uid>
-      <Hash>1</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>10</Uid>
       <Hash>2</Hash>
     </UidHash>
   </AstroObjectsEditors>

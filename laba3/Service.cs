@@ -36,7 +36,7 @@ namespace Universe
             return info;
         }
 
-        public void HelpDeleteObject(AstronomicalObject astroObject)
+        void HelpDeleteObject(AstronomicalObject astroObject)
         {
             if (astroObject is IComplexObj)
             {
@@ -49,7 +49,7 @@ namespace Universe
             astroObject.IsDestroy = true;
         }
 
-        public void DeleteObject(AstronomicalObject astroObject)
+        void DeleteObject(AstronomicalObject astroObject)
         {
             if (astroObject is IParticle)
             {
@@ -66,7 +66,7 @@ namespace Universe
             if (astroObjects.Contains(obj))
             {
                 DeleteObject(obj);
-                astroObjects.Remove(obj);
+                UpdateObjects();
                 SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
                 serializer.Serialize(info, FileName);
                 return true;

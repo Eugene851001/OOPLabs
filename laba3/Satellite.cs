@@ -49,10 +49,5 @@ namespace Universe
         {
             RemoveFromParent();
         }
-
-        public override void Draw(Graphics g, ViewInfo info)
-        {
-           
-        }
     }
 }

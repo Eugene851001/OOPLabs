@@ -63,10 +63,5 @@ namespace Universe
                 return planets.Count;
             }
         }
-
-        public override void Draw(Graphics g, ViewInfo info)
-        {
-            DrawUniverse.DrawStar(this, info.camera, info.height, info.width, g);
-        }
     }
 }

@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="AstronomicalObject.cs" />
     <Compile Include="BlackHole.cs" />
-    <Compile Include="DrawUniverse.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

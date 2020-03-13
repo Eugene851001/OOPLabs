@@ -83,11 +83,6 @@ namespace Universe
             return satellites.Remove((Satellite)obj);
         }
 
-        public override void Draw(Graphics g, ViewInfo info)
-        {
-            DrawUniverse.DrawPlanet(this, info.camera, info.height, info.width, g);
-        }
-
         ~Planet()
         {
             RemoveFromParent();

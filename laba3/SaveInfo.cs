@@ -29,7 +29,7 @@ namespace OOPLaba3
     public class SaveInfo
     {
         public List<AstronomicalObject> AstroObjects;
-        public List<UidHash> AstroObjectsEditors;//
+        public List<UidHash> AstroObjectsEditors;
 
         public SaveInfo()
         {
