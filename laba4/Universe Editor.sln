@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Universe Editor", "Universe Editor.csproj", "{73C7A330-2171-4F12-8275-228F88006A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniverseLife", "..\UniverseLife\UniverseLife.csproj", "{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73C7A330-2171-4F12-8275-228F88006A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C7A330-2171-4F12-8275-228F88006A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C7A330-2171-4F12-8275-228F88006A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C7A330-2171-4F12-8275-228F88006A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE77D08E-8593-4481-8F58-C13A61845D37}
+	EndGlobalSection
+EndGlobal

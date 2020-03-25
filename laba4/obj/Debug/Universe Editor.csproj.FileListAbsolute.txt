@@ -1,0 +1,15 @@
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\UniverseEditor.exe.config
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\UniverseEditor.exe
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\UniverseEditor.pdb
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmMain.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditAstro.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditBlackHole.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditPlanet.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditSatellite.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditStar.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\OOPLaba3.frmEditVariableStar.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\UniverseEditor.Properties.Resources.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\Universe Editor.csproj.GenerateResource.cache
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\UniverseEditor.exe
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\UniverseEditor.pdb
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\Universe Editor.csprojAssemblyReference.cache

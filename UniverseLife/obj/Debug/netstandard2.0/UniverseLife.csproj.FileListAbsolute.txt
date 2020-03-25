@@ -1,0 +1,12 @@
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseLife.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseLife.dll
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseLife.pdb
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseEditor.exe
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseEditor.pdb
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\bin\Debug\netstandard2.0\UniverseEditor.exe.config
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.csprojAssemblyReference.cache
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.csproj.CopyComplete
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.dll
+E:\4 сем\ООП\OOP\OOPLabs\UniverseLife\obj\Debug\netstandard2.0\UniverseLife.pdb

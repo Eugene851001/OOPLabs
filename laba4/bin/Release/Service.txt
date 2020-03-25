@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<ArrayOfAstronomicalObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AstronomicalObject xsi:type="Star">
+    <Name>Sun</Name>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <Mass>0</Mass>
+    <IsDestroy>false</IsDestroy>
+    <Size>0</Size>
+    <uid>0</uid>
+    <Temperature>0</Temperature>
+  </AstronomicalObject>
+</ArrayOfAstronomicalObject>pe="Planet">
+    <Name>Earth</Name>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <Mass>0</Mass>
+    <IsDestroy>false</IsDestroy>
+    <Size>0</Size>
+    <uid>2</uid>
+    <albedo>0</albedo>
+    <MainObject xsi:type="Star">
+      <Name>Sun</Name>
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>0</uid>
+      <Temperature>0</Temperature>
+    </MainObject>
+  </AstronomicalObject>
+</ArrayOfAstronomicalObject>pe="Planet">
+    <Name>Venera</Name>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <Mass>0</Mass>
+    <IsDestroy>false</IsDestroy>
+    <Size>0</Size>
+    <uid>5</uid>
+    <albedo>0</albedo>
+    <MainObject xsi:type="Star">
+      <Name />
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>6</uid>
+      <Temperature>0</Temperature>
+    </MainObject>
+  </AstronomicalObject>
+</ArrayOfAstronomicalObject>
