@@ -20,9 +20,11 @@ namespace UniverseEditor
         const int width = 50;
         const int ListBoxSize = 100;
 
+        public delegate object Parser(string s);
         frmEditAstro editor;
 
-        delegate void CreateField(PropertyInfo prop, AstronomicalObject obj, ref int counter);
+        delegate void CreateField(PropertyInfo prop, AstronomicalObject obj, 
+            List<AstronomicalObject> astroObjects, ref int counter);
         Dictionary<Type, CreateField> fieldsConstructors;
 
         System.Drawing.Point GetLocation(int counter)
@@ -54,6 +56,23 @@ namespace UniverseEditor
             return textBox;
         }
 
+        public ComboBox GetComboBox(PropertyInfo prop, List<AstronomicalObject> astroObjects, 
+            Type requiredType, ref int counter)
+        {
+            ComboBox comboBox = new ComboBox();
+            comboBox.Name = prop.Name;
+            foreach(AstronomicalObject astroObject in astroObjects)
+            {
+                if(requiredType.IsAssignableFrom(astroObject.GetType()))
+                    comboBox.Items.Add(astroObject);
+            }
+            comboBox.Location = GetLocation(counter);
+            comboBox.Location = new System.Drawing.Point() { X = comboBox.Location.X + width, Y = comboBox.Location.Y };
+            comboBox.Height = height;
+            comboBox.Width = width;
+            return comboBox;
+        }
+
         ListBox GetListBox(PropertyInfo prop, AstronomicalObject obj, int counter)
         {
             ListBox listBox = new ListBox();
@@ -69,45 +88,82 @@ namespace UniverseEditor
             return listBox;
         }
 
-        void AddIntField(PropertyInfo prop, AstronomicalObject obj, ref int counter)
+        void AddRegularField(PropertyInfo prop, AstronomicalObject obj, ref int counter, Parser getChanges)
         {
             Label label = GetLabel(prop, counter);
             TextBox textBox = GetTextBox(prop, obj, counter);
+            //если элемент с таким именем уже присутствует на форме, то лучше не добавлять его
+            if (editor.Controls.ContainsKey(textBox.Name) || editor.Controls.ContainsKey(label.Name))
+                return;
             editor.ApplyChangesEvent += delegate {
                 prop.SetValue(editor.astroObject,
-                int.Parse(textBox.Text));
+                getChanges(textBox.Text));
             };
             editor.Controls.Add(label);
             editor.Controls.Add(textBox);
             counter++;
         }
 
-        void AddStringField(PropertyInfo prop, AstronomicalObject obj, ref int counter)
+        void AddIntField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects, 
+            ref int counter)
+        {
+            Parser parser = delegate(string s){ return int.Parse(s);};
+            AddRegularField(prop, obj, ref counter, parser);
+        }
+
+
+        void AddFloatField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects,
+            ref int counter)
+        {
+            Parser parser = delegate (string s) { return float.Parse(s); };
+            AddRegularField(prop, obj, ref counter, parser);
+        }
+
+        void AddDoubleField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects, 
+            ref int counter)
+        {
+            Parser parser = delegate (string s) { return double.Parse(s); };
+            AddRegularField(prop, obj, ref counter, parser);
+        }
+
+        void AddStringField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects,
+            ref int counter)
+        {
+            Parser parser = delegate (string s) { return (object)s; };
+            AddRegularField(prop, obj, ref counter, parser);
+        }
+
+        void AddChooseAstroObjectField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects, 
+            ref int counter)
         {
             Label label = GetLabel(prop, counter);
-            TextBox textBox = GetTextBox(prop, obj, counter);
-            editor.ApplyChangesEvent += delegate {
-                prop.SetValue(editor.astroObject,
-                textBox.Text);
-            };
+            ComboBox comboBox = GetComboBox(prop, astroObjects, ((IParticle)obj).MainObject.GetType(), ref counter);
+            var participleAstroObject = obj as IParticle;
+            if (participleAstroObject.MainObject != null)
+                comboBox.SelectedItem = participleAstroObject.MainObject;
             editor.Controls.Add(label);
-            editor.Controls.Add(textBox);
+            editor.Controls.Add(comboBox);
+            editor.ApplyChangesEvent += delegate { if (comboBox.SelectedIndex != -1) 
+                                                    {
+                                                        ((IParticle)obj).MainObject = (AstronomicalObject)comboBox.SelectedItem;
+                                                    }
+                                                    ((IParticle)obj).AddToParent();
+                                                 };
             counter++;
         }
 
-        void AddAstroObjectGroupField(PropertyInfo prop, AstronomicalObject obj, ref int counter)
+        void AddAstroObjectGroupField(PropertyInfo prop, AstronomicalObject obj, List<AstronomicalObject> astroObjects, 
+            ref int counter)
         {
             Label label = GetLabel(prop, counter);
             ListBox listBox = GetListBox(prop, obj, counter);
+            if (editor.Controls.ContainsKey(listBox.Name) || editor.Controls.ContainsKey(label.Name))
+                return;
             editor.Controls.Add(label);
             editor.Controls.Add(listBox);
             counter += ListBoxSize / (deltaHeight + height);
         }
 
-        void AddPropertyField(PropertyInfo prop, AstronomicalObject obj, ref int counter)
-        {
-             
-        }
 
         public AstroFormCreater()
         {
@@ -115,9 +171,13 @@ namespace UniverseEditor
             fieldsConstructors.Add(typeof(int), AddIntField);
             fieldsConstructors.Add(typeof(string), AddStringField);
             fieldsConstructors.Add(typeof(List<AstronomicalObject>), AddAstroObjectGroupField);
+            fieldsConstructors.Add(typeof(float), AddFloatField);
+            fieldsConstructors.Add(typeof(double), AddDoubleField);
+            fieldsConstructors.Add(typeof(AstronomicalObject), AddChooseAstroObjectField);
         }
 
-        public frmEditAstro GetForm(Type astroObjectsType, AstronomicalObject obj)
+        public frmEditAstro GetForm(Type astroObjectsType, AstronomicalObject obj, 
+            List<AstronomicalObject> astroObjects)
         {
             editor = new frmEditAstro(obj);
             int counter = 0;
@@ -126,12 +186,10 @@ namespace UniverseEditor
             {
                 if (fieldsConstructors.ContainsKey(prop.PropertyType) && prop.Name != "Count")
                 {
-                    fieldsConstructors[prop.PropertyType](prop, obj, ref counter);
+                    fieldsConstructors[prop.PropertyType](prop, obj, astroObjects, ref counter);
                 }
             }
             return editor;
         }
-
-
     }
 }

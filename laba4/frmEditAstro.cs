@@ -75,5 +75,10 @@ namespace OOPLaba3
         {
 
         }
+
+        private void tbSize_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

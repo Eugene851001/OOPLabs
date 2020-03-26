@@ -231,7 +231,7 @@ namespace OOPLaba3
             return new EditObject((AstronomicalObject astroObj) =>
             {
                 AstroFormCreater formCreater = new AstroFormCreater();
-                frmEditAstro frmEditor = formCreater.GetForm(astroType, astroObj);
+                frmEditAstro frmEditor = formCreater.GetForm(astroType, astroObj, astroService.AstroObjects);
                 frmEditor.ShowDialog();
             });
         }
@@ -250,7 +250,7 @@ namespace OOPLaba3
                                                         {
                                                             AstroFormCreater formCreater = new AstroFormCreater();
                                                             frmEditAstro frmEditor = formCreater.GetForm(astroObj.GetType(),
-                                                                astroObj);
+                                                                astroObj, astroService.AstroObjects);
                                                             frmEditor.ShowDialog();
                                                         });
                     EventHandler create = delegate

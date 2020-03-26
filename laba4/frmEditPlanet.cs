@@ -27,7 +27,6 @@ namespace OOPLaba3
             {
                 if (item is Star)
                     cbStars.Items.Add(item);
-
             }
 
             cbStars.SelectedIndex = cbStars.Items.IndexOf(planet.MainObject);
@@ -41,7 +40,7 @@ namespace OOPLaba3
         {
             base.ApplyChanges();
             Planet newPlanet = new Planet(planet.Name, planet.Position, planet.Mass, 
-                planet.Size, (Star)planet.MainObject, planet.albedo);
+                planet.Size, (Star)planet.MainObject, planet.Albedo);
             foreach(Satellite satellite in lbSatellites.Items)
             {
                 newPlanet.Add(satellite);

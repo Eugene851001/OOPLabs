@@ -6,6 +6,8 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Universe;
+using System.Security.Policy;
+using System.Security.Permissions;
 
 namespace UniverseEditor
 {
@@ -36,5 +38,13 @@ namespace UniverseEditor
             }
             return astroTypes;
         }
+
+      /*  bool PluginVerify(string fileName)
+        {
+            byte[] publicKey = AssemblyAlgorithmIdAttribute.get
+            StrongNamePublicKeyBlob keyBlob = new StrongNamePublicKeyBlob(publicKey);
+            StrongNameKeyPair assemblyKeyPair = StrongNamePublicKeuBlob
+            return true;
+        }*/
     }
 }

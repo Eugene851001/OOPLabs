@@ -26,7 +26,7 @@ namespace Universe
     [XmlInclude(typeof(VariableStar))]
     public class AstronomicalObject
     {
-        public string Name;
+        public string Name { get; set; }
         public Point Position;
         public double Mass;
         public bool IsDestroy;

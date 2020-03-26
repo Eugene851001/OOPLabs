@@ -9,8 +9,8 @@ namespace Universe
 {
     public class Planet : AstronomicalObject, IComplexObj, IParticle
     {
-        public float albedo;
-        Star MainStar;
+        public float Albedo { get; set; }
+        public Star MainStar { get; set; }
         public AstronomicalObject MainObject
         {
             get
@@ -22,20 +22,26 @@ namespace Universe
                 MainStar = value as Star;
             }
         }
-        protected List<Satellite> satellites;
-
+        protected List<AstronomicalObject> satellites;
+        public List<AstronomicalObject> Satellitse
+        {
+            get
+            {
+                return satellites;
+            }
+        }
         public Planet() : base()
         {
-            satellites = new List<Satellite>();
+            satellites = new List<AstronomicalObject>();
             MainStar = new Star();
             AddToParent();
         }
         public Planet(string name, Point pos, double mass,
             double size, Star star, float albedo = 0.5f) : base(name, pos, mass, size)
         {
-            satellites = new List<Satellite>();
+            satellites = new List<AstronomicalObject>();
             MainStar = star;
-            this.albedo = albedo;
+            this.Albedo = albedo;
             AddToParent();
         }
 

@@ -11,6 +11,6 @@ namespace UniverseEditor
 {
     interface IAstroFormGetter
     {
-        frmEditAstro GetForm(Type astroType, AstronomicalObject obj);
+        frmEditAstro GetForm(Type astroType, AstronomicalObject obj, List<AstronomicalObject> astroObjects);
     }
 }

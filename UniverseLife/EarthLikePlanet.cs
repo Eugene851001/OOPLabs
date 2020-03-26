@@ -20,18 +20,14 @@ namespace UniverseLife
             }
         }
 
-        public string TestString { get; set; }
-
         public EarthLikePlanet(int population, string name, Point position, 
             double mass, double size, Star star): base(name, position, mass, size, star)
         {
-            TestString = "test";
             this.population = population;
         }
 
         public EarthLikePlanet(): base()
         {
-            TestString = "Test";
             population = 0;
         }
     }

@@ -13,7 +13,8 @@ namespace Universe
     {
         public string FileName = "Service.txt";
         public List<AstronomicalObject> astroObjects = new List<AstronomicalObject>();
-        SerializerXml serializer = new SerializerXml();
+        public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
+       // SerializerXml serializer = new SerializerXml();
 
         public void ChangeFileName(string fileName)
         {
@@ -68,7 +69,7 @@ namespace Universe
                 DeleteObject(obj);
                 UpdateObjects();
                 SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
-                serializer.Serialize(info, FileName);
+                //serializer.Serialize(info, FileName);
                 return true;
             }
             else
@@ -108,7 +109,6 @@ namespace Universe
                 }
             }
         }
-
 
         public void RemoveAll()
         {
