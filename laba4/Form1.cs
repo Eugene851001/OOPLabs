@@ -65,7 +65,7 @@ namespace OOPLaba3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+             
         }
 
         private void btShow_Click(object sender, EventArgs e)
@@ -83,20 +83,7 @@ namespace OOPLaba3
             Graphics g = e.Graphics;
             g.FillRectangle(new SolidBrush(Color.White), this.ClientRectangle);
         }
-
-
-        AstronomicalObject GetParent(int uid)
-        {
-            bool IsFound = false;
-            int i;
-            for (i = 0; !IsFound && i < astroService.astroObjects.Count; i++)
-            {
-                if (astroService.astroObjects[i].uid == uid)
-                    IsFound = true;
-            }
-            return astroService.astroObjects[i - 1];
-        }
-         
+     
 
         private void btEdit_Click(object sender, EventArgs e)
         {
@@ -243,18 +230,19 @@ namespace OOPLaba3
                 List<Type> types = AstroPluginLoader.LoadPlugin(OpenPluginFile.FileName);
                 if (types == null)
                     return;
-                foreach(Type astroType in types)
+                astroService.AddTypes(types);
+                editorsCounter++;
+                astroHashEditors.Add(editorsCounter, (AstronomicalObject astroObj) =>
+                {
+                    AstroFormCreater formCreater = new AstroFormCreater();
+                    frmEditAstro frmEditor = formCreater.GetForm(astroObj.GetType(),
+                        astroObj, astroService.AstroObjects);
+                    frmEditor.ShowDialog();
+                });
+                foreach (Type astroType in types)
                 {
                     Button btNew = buttonCreater.GetButton("tb" + astroType.Name, astroType.Name);
-                    editorsCounter++;
                     Type tempAstroType = astroType; 
-                    astroHashEditors.Add(editorsCounter, (AstronomicalObject astroObj) =>
-                                                        {
-                                                            AstroFormCreater formCreater = new AstroFormCreater();
-                                                            frmEditAstro frmEditor = formCreater.GetForm(astroObj.GetType(),
-                                                                astroObj, astroService.AstroObjects);
-                                                            frmEditor.ShowDialog();
-                                                        });
                     EventHandler create = delegate
                     {
                         AstronomicalObject obj = (AstronomicalObject)Activator.CreateInstance(astroType);

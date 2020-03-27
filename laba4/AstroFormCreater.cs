@@ -15,8 +15,8 @@ namespace UniverseEditor
         
         const int startY = 109;
         const int startX = 22;
-        const int deltaHeight = 10;
-        const int height = 50;
+        const int deltaHeight = 3;
+        const int height = 25;
         const int width = 50;
         const int ListBoxSize = 100;
 
@@ -73,13 +73,14 @@ namespace UniverseEditor
             return comboBox;
         }
 
+        //заполняет listbox через индексатор
         ListBox GetListBox(PropertyInfo prop, AstronomicalObject obj, int counter)
         {
             ListBox listBox = new ListBox();
-            List<AstronomicalObject> astroObjects = (List<AstronomicalObject>)prop.GetValue(obj);
-            foreach(var astroObject in astroObjects)
+            var complexObj = (IComplexObj)obj;
+            for(int i = 0; i < complexObj.Count; i++)
             {
-                listBox.Items.Add(astroObject);
+                listBox.Items.Add(complexObj[i]);
             }
             listBox.Name = "lb" + prop.Name;
             listBox.Location = GetLocation(counter);
@@ -189,6 +190,16 @@ namespace UniverseEditor
                     fieldsConstructors[prop.PropertyType](prop, obj, astroObjects, ref counter);
                 }
             }
+            //если для данный объект представляет собой систему из других объектов, 
+            //то выводим список объектов этой системы
+            if (obj is IComplexObj)
+            {
+                //свойство Item - индексатор
+                AddAstroObjectGroupField(astroObjectsType.GetProperty("Item"), 
+                    obj, astroObjects, ref counter);
+            }
+            editor.Name = "frm" + astroObjectsType.Name;
+            editor.Text = "Edit " + astroObjectsType.Name;
             return editor;
         }
     }

@@ -10,7 +10,7 @@ namespace Universe
     public class Planet : AstronomicalObject, IComplexObj, IParticle
     {
         public float Albedo { get; set; }
-        public Star MainStar { get; set; }
+        Star MainStar { get; set; }
         public AstronomicalObject MainObject
         {
             get
@@ -23,13 +23,7 @@ namespace Universe
             }
         }
         protected List<AstronomicalObject> satellites;
-        public List<AstronomicalObject> Satellitse
-        {
-            get
-            {
-                return satellites;
-            }
-        }
+
         public Planet() : base()
         {
             satellites = new List<AstronomicalObject>();

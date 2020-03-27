@@ -14,7 +14,17 @@ namespace Universe
         public string FileName = "Service.txt";
         public List<AstronomicalObject> astroObjects = new List<AstronomicalObject>();
         public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
-       // SerializerXml serializer = new SerializerXml();
+        SerializerXml serializer = new SerializerXml();
+        List<Type> types = new List<Type>();
+
+        public void AddTypes(List<Type> types)
+        {
+            foreach(var type in types)
+            {
+                if (!this.types.Contains(type))
+                    this.types.Add(type);
+            }
+        }
 
         public void ChangeFileName(string fileName)
         {
@@ -24,16 +34,23 @@ namespace Universe
         public void Add(AstronomicalObject obj, Dictionary<int, EditObject> astroEditors,
             Dictionary<int, EditObject> astroHashEditors)
         {
+            if (!types.Contains(obj.GetType()))
+                types.Add(obj.GetType());
             astroObjects.Add(obj);
-          //  SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
-           // serializer.Serialize(info, FileName);
+            SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
+            serializer.Serialize(info, FileName, types.ToArray());
         }
 
         public SaveInfo GetAll()
         {
             SaveInfo info = null;
-           // info = (SaveInfo)serializer.Deserialize(FileName);
-           // astroObjects = info.AstroObjects;
+            info = (SaveInfo)serializer.Deserialize(FileName, types.ToArray());
+            astroObjects = info.AstroObjects;
+            foreach(AstronomicalObject astroObject in astroObjects)
+            {
+                if (astroObject is IParticle)
+                    ((IParticle)astroObject).MainObject = GetParent(((IParticle)astroObject).MainObject.uid);
+            }
             return info;
         }
 
@@ -69,7 +86,7 @@ namespace Universe
                 DeleteObject(obj);
                 UpdateObjects();
                 SaveInfo info = new SaveInfo(astroObjects, astroEditors, astroHashEditors);
-                //serializer.Serialize(info, FileName);
+                serializer.Serialize(info, FileName, types.ToArray());
                 return true;
             }
             else
@@ -110,6 +127,17 @@ namespace Universe
             }
         }
 
+        AstronomicalObject GetParent(int uid)
+        {
+            bool IsFound = false;
+            int i;
+            for (i = 0; !IsFound && i < astroObjects.Count; i++)
+            {
+                if (astroObjects[i].uid == uid)
+                    IsFound = true;
+            }
+            return astroObjects[i - 1];
+        }
         public void RemoveAll()
         {
             astroObjects.Clear();

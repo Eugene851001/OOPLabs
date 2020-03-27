@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<SaveInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AstroObjects />
+  <AstroObjectsEditors>
+    <UidHash>
+      <Uid>0</Uid>
+      <Hash>2</Hash>
+    </UidHash>
+  </AstroObjectsEditors>
+</SaveInfo>

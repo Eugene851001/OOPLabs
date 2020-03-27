@@ -9,7 +9,7 @@ namespace OOPLaba3
 {
     interface ISerialize
     {
-        void Serialize(object obj, string path);
-        object Deserialize(string path);
+        void Serialize(object obj, string path, Type[] types);
+        object Deserialize(string path, Type[] types);
     }
 }
