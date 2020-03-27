@@ -20,7 +20,10 @@ namespace Universe
             }
             set
             {
-                MainPlanet = (Planet)value;
+                if (value is Planet)
+                    MainPlanet = (Planet)value;
+                else
+                    MainPlanet = new Planet();
             }
         }
         public Satellite(string name, Point pos, double mass, double size,

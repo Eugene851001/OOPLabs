@@ -45,11 +45,19 @@ namespace Universe
         {
             SaveInfo info = null;
             info = (SaveInfo)serializer.Deserialize(FileName, types.ToArray());
+            if (info == null)
+                return info;
             astroObjects = info.AstroObjects;
             foreach(AstronomicalObject astroObject in astroObjects)
             {
                 if (astroObject is IParticle)
+                {
                     ((IParticle)astroObject).MainObject = GetParent(((IParticle)astroObject).MainObject.uid);
+                    if(((IParticle)astroObject).MainObject != null)
+                    {
+                        ((IParticle)astroObject).AddToParent();
+                    }
+                }
             }
             return info;
         }
@@ -136,6 +144,8 @@ namespace Universe
                 if (astroObjects[i].uid == uid)
                     IsFound = true;
             }
+            if (!IsFound)
+                return null;
             return astroObjects[i - 1];
         }
         public void RemoveAll()

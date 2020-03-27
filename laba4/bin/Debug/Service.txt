@@ -1,10 +1,75 @@
 <?xml version="1.0"?>
 <SaveInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <AstroObjects />
+  <AstroObjects>
+    <AstronomicalObject xsi:type="VariableStar">
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>10</uid>
+      <Name>Betelgeize</Name>
+      <Temperature>0</Temperature>
+      <AverageLuminosity>0</AverageLuminosity>
+      <DeltaLuminosity>0</DeltaLuminosity>
+    </AstronomicalObject>
+    <AstronomicalObject xsi:type="Planet">
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>12</uid>
+      <Name>Меркурий</Name>
+      <Albedo>0</Albedo>
+      <MainObject xsi:type="VariableStar">
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <Mass>0</Mass>
+        <IsDestroy>false</IsDestroy>
+        <Size>0</Size>
+        <uid>10</uid>
+        <Name>Betelgeize</Name>
+        <Temperature>0</Temperature>
+        <AverageLuminosity>0</AverageLuminosity>
+        <DeltaLuminosity>0</DeltaLuminosity>
+      </MainObject>
+    </AstronomicalObject>
+  </AstroObjects>
   <AstroObjectsEditors>
     <UidHash>
       <Uid>0</Uid>
+      <Hash>6</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>2</Uid>
+      <Hash>6</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>10</Uid>
+      <Hash>4</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>12</Uid>
       <Hash>2</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>15</Uid>
+      <Hash>6</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>17</Uid>
+      <Hash>3</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>20</Uid>
+      <Hash>6</Hash>
     </UidHash>
   </AstroObjectsEditors>
 </SaveInfo>

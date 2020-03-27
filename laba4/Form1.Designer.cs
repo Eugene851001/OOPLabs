@@ -159,7 +159,7 @@
             // 
             // btLoadPlugin
             // 
-            this.btLoadPlugin.Location = new System.Drawing.Point(439, 415);
+            this.btLoadPlugin.Location = new System.Drawing.Point(435, 415);
             this.btLoadPlugin.Name = "btLoadPlugin";
             this.btLoadPlugin.Size = new System.Drawing.Size(110, 23);
             this.btLoadPlugin.TabIndex = 14;

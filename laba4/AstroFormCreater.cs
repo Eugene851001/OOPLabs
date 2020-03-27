@@ -138,7 +138,10 @@ namespace UniverseEditor
             ref int counter)
         {
             Label label = GetLabel(prop, counter);
-            ComboBox comboBox = GetComboBox(prop, astroObjects, ((IParticle)obj).MainObject.GetType(), ref counter);
+            ComboBox comboBox;
+            if (((IParticle)obj).MainObject == null)
+                ((IParticle)obj).MainObject = new AstronomicalObject();
+            comboBox = GetComboBox(prop, astroObjects, ((IParticle)obj).MainObject.GetType(), ref counter);
             var participleAstroObject = obj as IParticle;
             if (participleAstroObject.MainObject != null)
                 comboBox.SelectedItem = participleAstroObject.MainObject;

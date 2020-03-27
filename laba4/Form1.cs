@@ -208,7 +208,7 @@ namespace OOPLaba3
         private void btLoadAll_Click(object sender, EventArgs e)
         {
             SaveInfo info =  astroService.GetAll();
-            astroEditors = info.GetAstroEditors(astroHashEditors);
+            astroEditors = info?.GetAstroEditors(astroHashEditors);
             UpdateListBox();
         }
 

@@ -36,6 +36,10 @@ namespace OOPLaba3
                 XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo), types);
                 info = (SaveInfo)formatter.Deserialize(fin);
             }
+            catch
+            {
+                info = null;
+            }
             finally
             {
                 fin.Close();

@@ -19,7 +19,10 @@ namespace Universe
             }
             set
             {
-                MainStar = value as Star;
+                if (value is Star)
+                    MainStar = value as Star;
+                else
+                    MainStar = new Star();
             }
         }
         protected List<AstronomicalObject> satellites;
