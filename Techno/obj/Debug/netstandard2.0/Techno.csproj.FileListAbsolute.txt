@@ -1,0 +1,12 @@
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\Techno.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\Techno.dll
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\Techno.pdb
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\UniverseEditor.exe
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\UniverseEditor.pdb
+E:\4 сем\ООП\OOP\OOPLabs\Techno\bin\Debug\netstandard2.0\UniverseEditor.exe.config
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.csprojAssemblyReference.cache
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.csproj.CopyComplete
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.dll
+E:\4 сем\ООП\OOP\OOPLabs\Techno\obj\Debug\netstandard2.0\Techno.pdb

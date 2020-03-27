@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Universe Editor", "Universe Editor.csproj", "{73C7A330-2171-4F12-8275-228F88006A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniverseLife", "..\UniverseLife\UniverseLife.csproj", "{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniverseLife", "..\UniverseLife\UniverseLife.csproj", "{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techno", "..\Techno\Techno.csproj", "{FDCEA425-1B49-4928-8D2D-AB57C1445087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC2FAE9-1672-4FB3-A883-23BC7A840DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDCEA425-1B49-4928-8D2D-AB57C1445087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDCEA425-1B49-4928-8D2D-AB57C1445087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDCEA425-1B49-4928-8D2D-AB57C1445087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDCEA425-1B49-4928-8D2D-AB57C1445087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

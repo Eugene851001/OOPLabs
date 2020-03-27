@@ -15,36 +15,65 @@ namespace UniverseEditor
     {
         public static List<Type> LoadPlugin(string fileName)
         {
-            List<Type> astroTypes = new List<Type>();
-            Type[] allTypes = null;
-            try
+            List<Type> astroTypes = null;
+            if (IsValidPlugin(fileName))
             {
-                Assembly asm = Assembly.LoadFrom(fileName);
-                allTypes = asm.GetTypes();
-            }
-            catch
-            {
-                allTypes = null;//not necessary
-            }
-            if (allTypes != null)
-            {
-                foreach (Type type in allTypes)
+                astroTypes = new List<Type>();
+                Type[] allTypes = null;
+                try
                 {
-                    if (typeof(AstronomicalObject).IsAssignableFrom(type))
+                    Assembly asm = Assembly.LoadFrom(fileName);
+                    allTypes = asm.GetTypes();
+                }
+                catch(ReflectionTypeLoadException e)
+                {
+                    Exception[] exceptions = e.LoaderExceptions;
+                    allTypes = null;//not necessary
+                }
+                if (allTypes != null)
+                {
+                    foreach (Type type in allTypes)
                     {
-                        astroTypes.Add(type);
+                        if (typeof(AstronomicalObject).IsAssignableFrom(type))
+                        {
+                            astroTypes.Add(type);
+                        }
                     }
                 }
             }
             return astroTypes;
         }
 
-      /*  bool PluginVerify(string fileName)
+        static bool IsEqual(byte[] first, byte[] second)
         {
-            byte[] publicKey = AssemblyAlgorithmIdAttribute.get
-            StrongNamePublicKeyBlob keyBlob = new StrongNamePublicKeyBlob(publicKey);
-            StrongNameKeyPair assemblyKeyPair = StrongNamePublicKeuBlob
-            return true;
-        }*/
+            bool result = true;
+            if (first.Length != second.Length)
+                return false;
+            for (int i = 0; i < first.Length; i++)
+            {
+                if (first[i] != second[i])
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+        static bool IsValidPlugin(string fileName)
+        {
+            try
+            {
+                AssemblyName asmName = AssemblyName.GetAssemblyName(fileName);
+                AssemblyName selfAsmName = Assembly.GetExecutingAssembly().GetName();
+                if (IsEqual(asmName.GetPublicKeyToken(), selfAsmName.GetPublicKeyToken()))
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

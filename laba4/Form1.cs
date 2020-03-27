@@ -237,10 +237,12 @@ namespace OOPLaba3
         }
         private void btLoadPlugin_Click(object sender, EventArgs e)
         {
-            if (OpenPluginFile.ShowDialog() == DialogResult.OK)
+            if (OpenPluginFile.ShowDialog() == DialogResult.OK) 
             {
                 MainFormButtonCreater buttonCreater = new MainFormButtonCreater();
                 List<Type> types = AstroPluginLoader.LoadPlugin(OpenPluginFile.FileName);
+                if (types == null)
+                    return;
                 foreach(Type astroType in types)
                 {
                     Button btNew = buttonCreater.GetButton("tb" + astroType.Name, astroType.Name);
