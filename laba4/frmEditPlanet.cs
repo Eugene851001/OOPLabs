@@ -28,7 +28,6 @@ namespace OOPLaba3
                 if (item is Star)
                     cbStars.Items.Add(item);
             }
-
             cbStars.SelectedIndex = cbStars.Items.IndexOf(planet.MainObject);
             for (int i = 0; i < planet.Count; i++)
             {

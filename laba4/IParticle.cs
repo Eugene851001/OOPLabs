@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Universe
 {
-    interface IParticle
+    public interface IParticle
     {
         void AddToParent();
         void RemoveFromParent();

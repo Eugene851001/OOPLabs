@@ -18,7 +18,7 @@ namespace OOPLaba3
         {
             InitializeComponent();
         }
-
+      
         public frmEditStar(Star star): base(star)
         {
             InitializeComponent();

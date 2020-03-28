@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.lbPlanets = new System.Windows.Forms.ListBox();
+            this.cbMainObject = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,11 +51,20 @@
             this.lbPlanets.Size = new System.Drawing.Size(120, 116);
             this.lbPlanets.TabIndex = 10;
             // 
+            // cbMainObject
+            // 
+            this.cbMainObject.FormattingEnabled = true;
+            this.cbMainObject.Location = new System.Drawing.Point(116, 306);
+            this.cbMainObject.Name = "cbMainObject";
+            this.cbMainObject.Size = new System.Drawing.Size(121, 24);
+            this.cbMainObject.TabIndex = 11;
+            // 
             // frmEditStar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 450);
+            this.Controls.Add(this.cbMainObject);
             this.Controls.Add(this.lbPlanets);
             this.Controls.Add(this.label1);
             this.Name = "frmEditStar";
@@ -62,6 +72,7 @@
             this.Load += new System.EventHandler(this.frmEditStar_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.lbPlanets, 0);
+            this.Controls.SetChildIndex(this.cbMainObject, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbPlanets;
+        private System.Windows.Forms.ComboBox cbMainObject;
     }
 }

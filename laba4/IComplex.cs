@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Universe
 {
-    interface IComplexObj
+    public interface IComplexObj
     {
         int Count { get; }
         void Add(object obj);

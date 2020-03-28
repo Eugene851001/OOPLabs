@@ -11,13 +11,7 @@ namespace Universe
     public class Star : AstronomicalObject, IComplexObj
     {
         public int Temperature;
-        public int PlanetsAmount
-        {
-            get
-            {
-                return planets.Count;
-            }
-        }
+
         private List<Planet> planets;
 
         public void CleanList()

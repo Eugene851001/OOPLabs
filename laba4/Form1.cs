@@ -22,6 +22,7 @@ namespace OOPLaba3
         public Dictionary<int, EditObject> astroHashEditors;
         int editorsCounter = 0;
         Service astroService;
+        MainFormButtonCreater buttonCreater;
 
         public frmMain()  
         {
@@ -34,7 +35,17 @@ namespace OOPLaba3
             astroHashEditors.Add(editorsCounter++, EditPlanet);
             astroHashEditors.Add(editorsCounter++, EditSatellite);
             astroHashEditors.Add(editorsCounter++, EditVariableStar);
+            astroHashEditors.Add(editorsCounter++, EditNewAstroType);
             tbFilePath.Text = astroService.FileName;
+            buttonCreater = new MainFormButtonCreater();
+        }
+
+        void EditNewAstroType(AstronomicalObject astroObj)
+        {
+            AstroFormCreater formCreater = new AstroFormCreater();
+            frmEditAstro frmEditor = formCreater.GetForm(astroObj.GetType(),
+                astroObj, astroService.AstroObjects);
+            frmEditor.ShowDialog();
         }
 
         public void UpdateListBox()
@@ -226,19 +237,11 @@ namespace OOPLaba3
         {
             if (OpenPluginFile.ShowDialog() == DialogResult.OK) 
             {
-                MainFormButtonCreater buttonCreater = new MainFormButtonCreater();
+                
                 List<Type> types = AstroPluginLoader.LoadPlugin(OpenPluginFile.FileName);
                 if (types == null)
                     return;
                 astroService.AddTypes(types);
-                editorsCounter++;
-                astroHashEditors.Add(editorsCounter, (AstronomicalObject astroObj) =>
-                {
-                    AstroFormCreater formCreater = new AstroFormCreater();
-                    frmEditAstro frmEditor = formCreater.GetForm(astroObj.GetType(),
-                        astroObj, astroService.AstroObjects);
-                    frmEditor.ShowDialog();
-                });
                 foreach (Type astroType in types)
                 {
                     Button btNew = buttonCreater.GetButton("tb" + astroType.Name, astroType.Name);
@@ -246,7 +249,7 @@ namespace OOPLaba3
                     EventHandler create = delegate
                     {
                         AstronomicalObject obj = (AstronomicalObject)Activator.CreateInstance(astroType);
-                        astroEditors.Add(obj.uid, astroHashEditors[editorsCounter]);
+                        astroEditors.Add(obj.uid, astroHashEditors[editorsCounter - 1]);
                         AddNewAstroObject(obj);
                     };
                     btNew.Click += create;
