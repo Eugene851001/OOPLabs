@@ -28,11 +28,24 @@
       },
       "Universe Editor/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "UniverseMain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Universe Editor.dll": {}
         },
         "runtime": {
           "bin/placeholder/Universe Editor.dll": {}
+        }
+      },
+      "UniverseMain/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/UniverseMain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UniverseMain.dll": {}
         }
       }
     }
@@ -185,6 +198,11 @@
       "type": "project",
       "path": "../laba4/Universe Editor.csproj",
       "msbuildProject": "../laba4/Universe Editor.csproj"
+    },
+    "UniverseMain/1.0.0": {
+      "type": "project",
+      "path": "../UniverseMain/UniverseMain.csproj",
+      "msbuildProject": "../UniverseMain/UniverseMain.csproj"
     }
   },
   "projectFileDependencyGroups": {

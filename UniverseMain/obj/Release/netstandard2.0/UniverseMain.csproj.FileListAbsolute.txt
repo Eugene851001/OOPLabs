@@ -1,0 +1,7 @@
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\bin\Release\netstandard2.0\UniverseMain.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\bin\Release\netstandard2.0\UniverseMain.dll
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\bin\Release\netstandard2.0\UniverseMain.pdb
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\obj\Release\netstandard2.0\UniverseMain.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\obj\Release\netstandard2.0\UniverseMain.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\obj\Release\netstandard2.0\UniverseMain.dll
+E:\4 сем\ООП\OOP\OOPLabs\UniverseMain\obj\Release\netstandard2.0\UniverseMain.pdb

@@ -1,12 +1,11 @@
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseGalaxy.deps.json
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseGalaxy.dll
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseGalaxy.pdb
-E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseEditor.exe
-E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseEditor.pdb
-E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseEditor.exe.config
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.csprojAssemblyReference.cache
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.AssemblyInfoInputs.cache
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.AssemblyInfo.cs
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.csproj.CopyComplete
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.dll
 E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\obj\Debug\netstandard2.0\UniverseGalaxy.pdb
+E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseMain.dll
+E:\4 сем\ООП\OOP\OOPLabs\UniverseGalaxy\bin\Debug\netstandard2.0\UniverseMain.pdb

@@ -26,13 +26,14 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Universe Editor/1.0.0": {
+      "UniverseMain/1.0.0": {
         "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/Universe Editor.dll": {}
+          "bin/placeholder/UniverseMain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Universe Editor.dll": {}
+          "bin/placeholder/UniverseMain.dll": {}
         }
       }
     }
@@ -181,16 +182,16 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Universe Editor/1.0.0": {
+    "UniverseMain/1.0.0": {
       "type": "project",
-      "path": "../laba4/Universe Editor.csproj",
-      "msbuildProject": "../laba4/Universe Editor.csproj"
+      "path": "../UniverseMain/UniverseMain.csproj",
+      "msbuildProject": "../UniverseMain/UniverseMain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
-      "Universe Editor >= 1.0.0"
+      "UniverseMain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -223,8 +224,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\4 сем\\ООП\\OOP\\OOPLabs\\laba4\\Universe Editor.csproj": {
-              "projectPath": "E:\\4 сем\\ООП\\OOP\\OOPLabs\\laba4\\Universe Editor.csproj"
+            "E:\\4 сем\\ООП\\OOP\\OOPLabs\\UniverseMain\\UniverseMain.csproj": {
+              "projectPath": "E:\\4 сем\\ООП\\OOP\\OOPLabs\\UniverseMain\\UniverseMain.csproj"
             }
           }
         }

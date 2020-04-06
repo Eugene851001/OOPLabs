@@ -20,8 +20,8 @@
         <Mass>0</Mass>
         <IsDestroy>false</IsDestroy>
         <Size>0</Size>
-        <uid>3</uid>
-        <Name>MilkyWay</Name>
+        <uid>2</uid>
+        <Name />
       </MainObject>
     </AstronomicalObject>
     <AstronomicalObject xsi:type="Galaxy">
@@ -33,114 +33,7 @@
       <IsDestroy>false</IsDestroy>
       <Size>0</Size>
       <uid>3</uid>
-      <Name>MilkyWay</Name>
-    </AstronomicalObject>
-    <AstronomicalObject xsi:type="EarthLikePlanet">
-      <Position>
-        <X>0</X>
-        <Y>0</Y>
-      </Position>
-      <Mass>0</Mass>
-      <IsDestroy>false</IsDestroy>
-      <Size>0</Size>
-      <uid>4</uid>
-      <Name>Земля</Name>
-      <Albedo>0</Albedo>
-      <MainObject xsi:type="GalacticStar">
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-        </Position>
-        <Mass>0</Mass>
-        <IsDestroy>false</IsDestroy>
-        <Size>0</Size>
-        <uid>0</uid>
-        <Name>Sun</Name>
-        <Temperature>0</Temperature>
-        <MainObject xsi:type="Galaxy">
-          <Position>
-            <X>0</X>
-            <Y>0</Y>
-          </Position>
-          <Mass>0</Mass>
-          <IsDestroy>false</IsDestroy>
-          <Size>0</Size>
-          <uid>3</uid>
-          <Name>MilkyWay</Name>
-        </MainObject>
-      </MainObject>
-      <Population>0</Population>
-    </AstronomicalObject>
-    <AstronomicalObject xsi:type="SpaceStation">
-      <Position>
-        <X>0</X>
-        <Y>0</Y>
-      </Position>
-      <Mass>0</Mass>
-      <IsDestroy>false</IsDestroy>
-      <Size>0</Size>
-      <uid>6</uid>
-      <Name>Мир2</Name>
-      <MainObject xsi:type="EarthLikePlanet">
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-        </Position>
-        <Mass>0</Mass>
-        <IsDestroy>false</IsDestroy>
-        <Size>0</Size>
-        <uid>4</uid>
-        <Name>Земля</Name>
-        <Albedo>0</Albedo>
-        <MainObject xsi:type="GalacticStar">
-          <Position>
-            <X>0</X>
-            <Y>0</Y>
-          </Position>
-          <Mass>0</Mass>
-          <IsDestroy>false</IsDestroy>
-          <Size>0</Size>
-          <uid>0</uid>
-          <Name>Sun</Name>
-          <Temperature>0</Temperature>
-          <MainObject xsi:type="Galaxy">
-            <Position>
-              <X>0</X>
-              <Y>0</Y>
-            </Position>
-            <Mass>0</Mass>
-            <IsDestroy>false</IsDestroy>
-            <Size>0</Size>
-            <uid>3</uid>
-            <Name>MilkyWay</Name>
-          </MainObject>
-        </MainObject>
-        <Population>0</Population>
-      </MainObject>
-      <Country>СССР</Country>
-    </AstronomicalObject>
-    <AstronomicalObject xsi:type="GalacticStar">
-      <Position>
-        <X>0</X>
-        <Y>0</Y>
-      </Position>
-      <Mass>0</Mass>
-      <IsDestroy>false</IsDestroy>
-      <Size>0</Size>
-      <uid>14</uid>
-      <Name>Algol</Name>
-      <Temperature>0</Temperature>
-      <MainObject xsi:type="Galaxy">
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-        </Position>
-        <Mass>0</Mass>
-        <IsDestroy>false</IsDestroy>
-        <Size>0</Size>
-        <uid>3</uid>
-        <Name>MilkyWay</Name>
-      </MainObject>
+      <Name>Milky Way</Name>
     </AstronomicalObject>
   </AstroObjects>
   <AstroObjectsEditors>
@@ -150,18 +43,6 @@
     </UidHash>
     <UidHash>
       <Uid>3</Uid>
-      <Hash>5</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>4</Uid>
-      <Hash>5</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>6</Uid>
-      <Hash>5</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>14</Uid>
       <Hash>5</Hash>
     </UidHash>
   </AstroObjectsEditors>

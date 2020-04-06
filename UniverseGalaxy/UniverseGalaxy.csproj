@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>KeyPair.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Keys.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\laba4\Universe Editor.csproj" />
+    <ProjectReference Include="..\UniverseMain\UniverseMain.csproj" />
   </ItemGroup>
 
 </Project>

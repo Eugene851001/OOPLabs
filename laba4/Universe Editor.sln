@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniverseLife", "..\Universe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Techno", "..\Techno\Techno.csproj", "{FDCEA425-1B49-4928-8D2D-AB57C1445087}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniverseGalaxy", "..\UniverseGalaxy\UniverseGalaxy.csproj", "{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniverseGalaxy", "..\UniverseGalaxy\UniverseGalaxy.csproj", "{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniverseMain", "..\UniverseMain\UniverseMain.csproj", "{51393D31-57BD-4F24-8257-73F428D244BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51393D31-57BD-4F24-8257-73F428D244BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51393D31-57BD-4F24-8257-73F428D244BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51393D31-57BD-4F24-8257-73F428D244BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51393D31-57BD-4F24-8257-73F428D244BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
