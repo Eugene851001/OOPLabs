@@ -1,21 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using OOPLaba3;
+using Universe;
 
-namespace Universe
+namespace UniverseEditor
 {
     class Service: IService
     {
         public string FileName = "Service.txt";
-        public List<AstronomicalObject> astroObjects = new List<AstronomicalObject>();
+        public List<AstronomicalObject> astroObjects;
         public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
-        SerializerXml serializer = new SerializerXml();
+        ISerialize serializer;
+        public ISerialize Serializer
+        {
+            set
+            {
+                serializer = value; 
+            }
+        }
         List<Type> types = new List<Type>();
+
+        public Service()
+        {
+            astroObjects = new List<AstronomicalObject>();
+            serializer = new SerializerXml();
+        }
+
+
+        public Service(ISerializationProcessing serializationProcessing)
+        {
+            astroObjects = new List<AstronomicalObject>();
+            serializer = new SpecialSerializer(serializationProcessing);
+        }
 
         public void AddTypes(List<Type> types)
         {
@@ -148,6 +164,7 @@ namespace Universe
                 return null;
             return astroObjects[i - 1];
         }
+
         public void RemoveAll()
         {
             astroObjects.Clear();

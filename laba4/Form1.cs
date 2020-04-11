@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
 using System.IO;
 using Universe;
 using UniverseEditor;
-using System.CodeDom.Compiler;
 
 namespace OOPLaba3
 {
@@ -24,11 +17,34 @@ namespace OOPLaba3
         Service astroService;
         MainFormButtonCreater buttonCreater;
 
+        SerializationFormat SaveTo;
+        SerializationFormat SaveFrom;
+
+        bool isLoadedFunctionalPlugin = false;
+        string settingsFileName = "Settings.ini";
+
+        List<ISerializationProcessing> serializationHandlers;
+
         public frmMain()  
         {
             InitializeComponent();
-            astroEditors = new Dictionary<int, EditObject>();//uid-editor
+            string path = Path.GetFullPath("../../../XmlToJSonFunctionalPlugin/bin/Debug/netstandard2.0/XmlToJSonFunctionalPlugin.dll");
+            serializationHandlers = FunctionalPluginLoader.LoadPlugin(path);
             astroService = new Service();
+            if(serializationHandlers != null)
+            {
+                isLoadedFunctionalPlugin = true;
+                if (LoadSettings())
+                    ApplySettings();
+                else
+                    astroService = new Service();
+            }
+            else
+            {
+                isLoadedFunctionalPlugin = false;
+                astroService = new Service();
+            }
+            astroEditors = new Dictionary<int, EditObject>();//uid-editor
             astroHashEditors = new Dictionary<int, EditObject>();
             astroHashEditors.Add(editorsCounter++, EditAstro);
             astroHashEditors.Add(editorsCounter++, EditStar);
@@ -38,6 +54,48 @@ namespace OOPLaba3
             astroHashEditors.Add(editorsCounter++, EditNewAstroType);
             tbFilePath.Text = astroService.FileName;
             buttonCreater = new MainFormButtonCreater();
+        }
+
+        bool LoadSettings()
+        {
+            FileStream fin;
+            try
+            {
+                fin = new FileStream(settingsFileName, FileMode.Open);
+            }
+            catch
+            {
+                return false;
+            }
+            bool result = true;
+            try
+            {
+                byte[] buffer = new byte[4];
+                int amount = fin.Read(buffer, 0, 4);
+                if (amount != 4)
+                    result = false;
+                SaveFrom = (SerializationFormat)buffer[0];
+                SaveTo = (SerializationFormat)buffer[1];
+            }
+            catch
+            {
+                result = false;
+            }
+            finally
+            {
+                fin.Close();
+            }
+            return result;
+        }
+
+        void ApplySettings()
+        {
+            if (SaveTo == SerializationFormat.Json)
+                astroService.Serializer = new SpecialSerializer(serializationHandlers[0]);
+            else
+                astroService.Serializer = new SerializerXml();
+            if (SaveFrom == SerializationFormat.Json)
+                astroService.Serializer = new SerializerJson();
         }
 
         void EditNewAstroType(AstronomicalObject astroObj)
@@ -101,7 +159,17 @@ namespace OOPLaba3
             if (lbStars.SelectedIndex != -1)
             {
                 AstronomicalObject obj = (AstronomicalObject)lbStars.SelectedItem;
-                astroEditors[obj.uid](obj);
+                try
+                {
+                    astroEditors[obj.uid](obj);
+                }
+                catch
+                {
+                    MessageBox.Show("It was not possible to determine the specific type " +
+                        "of this astronomical object", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    frmEditAstro frmAstro = new frmEditAstro(obj);
+                    frmAstro.ShowDialog();
+                }
                 astroService.UpdateObjectList(obj);
                 UpdateListBox();
             }
@@ -147,6 +215,13 @@ namespace OOPLaba3
         {
             frmEditPlanet frmEdit = new frmEditPlanet((Planet)obj, astroService.astroObjects);
             frmEdit.ShowDialog();
+        }
+
+        public void EditAstronomicalObject(AstronomicalObject obj)
+        {
+            frmEditAstro frmEdit = new frmEditAstro(obj);
+            frmEdit.ShowDialog();
+
         }
 
         public void EditAstro(AstronomicalObject obj)
@@ -256,6 +331,39 @@ namespace OOPLaba3
                     this.Controls.Add(btNew);
                 }
             }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void msMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isLoadedFunctionalPlugin)
+            {
+                frmOptions frm = new frmOptions(settingsFileName);
+                frm.ShowDialog();
+                LoadSettings();
+                ApplySettings();
+            }
+            else
+            { 
+                MessageBox.Show("The required functional plugin is not loaded", "Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btAstroObject_Click(object sender, EventArgs e)
+        {
+            AstronomicalObject astro = new AstronomicalObject();
+            astroEditors.Add(astro.uid, EditAstronomicalObject);
+            AddNewAstroObject(astro);
         }
     }
 }

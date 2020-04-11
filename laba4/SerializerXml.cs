@@ -7,13 +7,12 @@ using System.Xml.Serialization;
 using System.IO;
 using Universe;
 
-namespace OOPLaba3
+namespace UniverseEditor
 {
     class SerializerXml: ISerialize
     {
         public void Serialize(object obj, string path, Type[] types)
         {
-           
             FileStream fout = new FileStream(path, FileMode.Create);
             try
             {
@@ -24,7 +23,6 @@ namespace OOPLaba3
             {
                 fout.Close();
             }
-
         }
 
         public object Deserialize(string path, Type[] types)

@@ -113,3 +113,21 @@ E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Xml.XPath.XDocument.dll
 E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\UniverseMain.dll
 E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\UniverseMain.pdb
 E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\Universe Editor.csproj.CopyComplete
+E:\4 сем\ООП\OOP\OOPLabs\laba4\obj\Debug\UniverseEditor.frmOptions.resources
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Buffers.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Memory.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Numerics.Vectors.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Encodings.Web.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Json.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Buffers.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Memory.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Numerics.Vectors.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Encodings.Web.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Json.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.ValueTuple.xml

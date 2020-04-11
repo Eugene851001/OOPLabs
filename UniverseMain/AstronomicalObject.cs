@@ -11,7 +11,8 @@ namespace Universe
 
     public struct Point
     {
-        public double X, Y;
+        public double X { get; set;} 
+        public double Y { get; set;}
         public Point(double x, double y)
         {
             X = x;
@@ -27,11 +28,13 @@ namespace Universe
     public class AstronomicalObject
     {
         public string Name { get; set; }
-        public Point Position;
-        public double Mass;
-        public bool IsDestroy;
-        public double Size;
-        public int uid;
+        public Point Position { get; set; }
+        public double Mass { get; set; }
+        public bool IsDestroy { get; set;}
+        public double Size { get; set; }
+
+        public int uid { get; set; }
+
         static int UidCounter = 0;
         public AstronomicalObject()
         {

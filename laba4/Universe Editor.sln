@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Techno", "..\Techno\Techno.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniverseGalaxy", "..\UniverseGalaxy\UniverseGalaxy.csproj", "{05E19A64-D219-4D47-9EC6-DFE3A701ACDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniverseMain", "..\UniverseMain\UniverseMain.csproj", "{51393D31-57BD-4F24-8257-73F428D244BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniverseMain", "..\UniverseMain\UniverseMain.csproj", "{51393D31-57BD-4F24-8257-73F428D244BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlToJSonFunctionalPlugin", "..\XmlToJSonFunctionalPlugin\XmlToJSonFunctionalPlugin.csproj", "{3C390910-9F27-4341-8AA2-C8F799BC2475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{51393D31-57BD-4F24-8257-73F428D244BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51393D31-57BD-4F24-8257-73F428D244BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51393D31-57BD-4F24-8257-73F428D244BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C390910-9F27-4341-8AA2-C8F799BC2475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C390910-9F27-4341-8AA2-C8F799BC2475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C390910-9F27-4341-8AA2-C8F799BC2475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C390910-9F27-4341-8AA2-C8F799BC2475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
