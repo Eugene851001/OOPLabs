@@ -16,7 +16,7 @@ namespace UniverseEditor
             FileStream fout = new FileStream(path, FileMode.Create);
             try
             {
-                string jsonString = JsonSerializer.Serialize(obj);
+                string jsonString = JsonSerializer.Serialize(obj, new JsonSerializerOptions() { WriteIndented = true});
                 fout.Write(Encoding.ASCII.GetBytes(jsonString), 0, Encoding.ASCII.GetBytes(jsonString).Length);
             }
             finally

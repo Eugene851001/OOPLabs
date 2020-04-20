@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UniverseEditor;
 
 namespace XmlToJSonFunctionalPlugin
 {
@@ -11,6 +12,30 @@ namespace XmlToJSonFunctionalPlugin
 
         int Next;
         string jsonString;
+
+        SerializationOptions additionalOptions;
+
+        string openComplexBrackets = ":{";
+        string closeComplexBrackets = "}";
+        string nextLine = "";
+        string delimeter = ",";
+        string currentTab = "";
+        string tab = "  ";
+
+        public XmlToJsonParser()
+        {
+            additionalOptions = SerializationOptions.None;
+        }
+        public XmlToJsonParser(SerializationOptions serializationOptions)
+        {
+            this.additionalOptions = serializationOptions;
+            if((serializationOptions & SerializationOptions.WriteIndent) != 0)
+            {
+                nextLine = "\r\n";
+                openComplexBrackets = ": {\r\n";
+                delimeter = ", \r\n";
+            }
+        }
 
         bool Term(Token expected)
         {
@@ -26,16 +51,14 @@ namespace XmlToJSonFunctionalPlugin
 
         bool OpenBracket()
         {
-            jsonString += "{";
             int SaveNext = Next;
             return Term(new Token() { Type = TokenType.OpenBracket })
                 && (jsonString += "\"" + tokens[SaveNext].Value + "\"") != null;
         }
 
-        bool CloseBrackets()
+        bool CloseBracket()
         {
-            return Term(new Token() { Type = TokenType.CloseBracket}) 
-                && (jsonString += "}") != null;
+            return Term(new Token() { Type = TokenType.CloseBracket});
         }
 
         bool BasicValue()
@@ -48,9 +71,8 @@ namespace XmlToJSonFunctionalPlugin
         bool Value()
         {
             int SaveNext = Next;
-            jsonString += ": ";
             //предполагается, что SaveNext никогда не равно -1
-            return BasicValue() || (Next = SaveNext) != -1 && Expression();
+            return BasicValue(); //|| (Next = SaveNext) != -1 && Expression();
         }
 
         bool OptionalWhiteSpace()
@@ -68,18 +90,50 @@ namespace XmlToJSonFunctionalPlugin
         bool OptionalExpression()
         {
             int SaveNext = Next;
-            return (Next < tokens.Length) && Expression() || (Next = SaveNext) != -1;
+            char[] saveBuffer = new char[jsonString.Length];
+            jsonString.CopyTo(0, saveBuffer, 0, jsonString.Length);
+            string saveString = new string(saveBuffer);
+            char[] saveBufferTab = new char[currentTab.Length];
+            currentTab.CopyTo(0, saveBufferTab, 0, saveBufferTab.Length);
+            string saveTab = new string(saveBufferTab);
+            jsonString += delimeter;
+            jsonString += currentTab;
+            return (Next < tokens.Length) && Expression() || (jsonString = saveString) != null 
+                && (currentTab = saveTab) != null && (Next = SaveNext) != -1;
         }
 
+        bool SimpleExpression()
+        {
+            int SaveNext = Next;
+            return OptionalVersion() && OptionalWhiteSpace() && OpenBracket() && (jsonString += ": ") != null 
+                && OptionalWhiteSpace() && Value() && OptionalWhiteSpace() && CloseBracket() && 
+                OptionalWhiteSpace() && OptionalExpression(); 
+        }
+
+        bool ComplexExpression()
+        {
+            return OptionalVersion() && OptionalWhiteSpace() && OpenBracket() && 
+                (jsonString += openComplexBrackets + (currentTab += tab)) != null && OptionalWhiteSpace() && Expression() 
+                && OptionalWhiteSpace()&& CloseBracket() && (jsonString += nextLine + (currentTab = currentTab.
+                Substring(0, currentTab.Length - tab.Length)) + closeComplexBrackets) != null && OptionalExpression() ;
+        }
+         
         bool Expression()
         {
             int SaveNext = Next;
-            return OptionalVersion() && OptionalWhiteSpace() && OpenBracket() && OptionalWhiteSpace()
-                && Value() && OptionalWhiteSpace() && CloseBrackets() && OptionalWhiteSpace() && OptionalExpression(); 
+            char[] saveBufferJson = new char[jsonString.Length];
+            jsonString.CopyTo(0, saveBufferJson, 0, jsonString.Length);
+            string saveString = new string(saveBufferJson);
+            char[] saveBufferTab = new char[currentTab.Length];
+            currentTab.CopyTo(0, saveBufferTab, 0, saveBufferTab.Length);
+            string saveTab = new string(saveBufferTab);
+            return ComplexExpression() || (Next = SaveNext) != -1 && (jsonString = 
+               saveString) != null && (currentTab = saveTab) != null && SimpleExpression();
         }
 
         public string GetJsonString(Token[] tokens)
         {
+            
             this.tokens = tokens;
             jsonString = "";
             Expression();

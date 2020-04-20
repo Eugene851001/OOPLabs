@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btApply = new System.Windows.Forms.Button();
+            this.cbWriteIndent = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cbSaveFrom
@@ -117,11 +118,22 @@
             this.btApply.UseVisualStyleBackColor = true;
             this.btApply.Click += new System.EventHandler(this.btApply_Click);
             // 
+            // cbWriteIndent
+            // 
+            this.cbWriteIndent.AutoSize = true;
+            this.cbWriteIndent.Location = new System.Drawing.Point(426, 203);
+            this.cbWriteIndent.Name = "cbWriteIndent";
+            this.cbWriteIndent.Size = new System.Drawing.Size(106, 21);
+            this.cbWriteIndent.TabIndex = 9;
+            this.cbWriteIndent.Text = "Write indent";
+            this.cbWriteIndent.UseVisualStyleBackColor = true;
+            // 
             // frmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 255);
+            this.Controls.Add(this.cbWriteIndent);
             this.Controls.Add(this.btApply);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -150,5 +162,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btApply;
+        private System.Windows.Forms.CheckBox cbWriteIndent;
     }
 }

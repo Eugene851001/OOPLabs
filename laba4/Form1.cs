@@ -19,6 +19,7 @@ namespace OOPLaba3
 
         SerializationFormat SaveTo;
         SerializationFormat SaveFrom;
+        SerializationOptions additionalOptions;
 
         bool isLoadedFunctionalPlugin = false;
         string settingsFileName = "Settings.ini";
@@ -58,6 +59,7 @@ namespace OOPLaba3
 
         bool LoadSettings()
         {
+            const int optionAmount = 5;
             FileStream fin;
             try
             {
@@ -70,12 +72,13 @@ namespace OOPLaba3
             bool result = true;
             try
             {
-                byte[] buffer = new byte[4];
-                int amount = fin.Read(buffer, 0, 4);
-                if (amount != 4)
+                byte[] buffer = new byte[optionAmount];
+                int amount = fin.Read(buffer, 0, optionAmount);
+                if (amount != optionAmount)
                     result = false;
                 SaveFrom = (SerializationFormat)buffer[0];
                 SaveTo = (SerializationFormat)buffer[1];
+                additionalOptions = (SerializationOptions)buffer[4];
             }
             catch
             {
@@ -91,7 +94,10 @@ namespace OOPLaba3
         void ApplySettings()
         {
             if (SaveTo == SerializationFormat.Json)
-                astroService.Serializer = new SpecialSerializer(serializationHandlers[0]);
+            {
+                astroService.Serializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
+                astroService.AdditonalSettings = (byte)additionalOptions;
+            }
             else
                 astroService.Serializer = new SerializerXml();
             if (SaveFrom == SerializationFormat.Json)
@@ -228,7 +234,6 @@ namespace OOPLaba3
         {
             frmEditAstro frmEdit = new frmEditAstro(obj);
             frmEdit.ShowDialog();
-
         }
 
         public void EditSatellite(AstronomicalObject obj)
@@ -274,6 +279,14 @@ namespace OOPLaba3
             VariableStar star = new VariableStar();
             astroEditors.Add(star.uid, EditVariableStar);
             AddNewAstroObject(star);
+        }
+
+
+        private void btAstroObject_Click(object sender, EventArgs e)
+        {
+            AstronomicalObject astro = new AstronomicalObject();
+            astroEditors.Add(astro.uid, EditAstro);
+            AddNewAstroObject(astro);
         }
 
         private void OpenFile_FileOk(object sender, CancelEventArgs e)
@@ -357,13 +370,6 @@ namespace OOPLaba3
                 MessageBox.Show("The required functional plugin is not loaded", "Error", 
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btAstroObject_Click(object sender, EventArgs e)
-        {
-            AstronomicalObject astro = new AstronomicalObject();
-            astroEditors.Add(astro.uid, EditAstronomicalObject);
-            AddNewAstroObject(astro);
         }
     }
 }

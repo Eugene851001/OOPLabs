@@ -9,6 +9,7 @@ namespace UniverseEditor
     {
         public string FileName = "Service.txt";
         public List<AstronomicalObject> astroObjects;
+        public byte AdditonalSettings;
         public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
         ISerialize serializer;
         public ISerialize Serializer
@@ -22,6 +23,7 @@ namespace UniverseEditor
 
         public Service()
         {
+            AdditonalSettings = 0;
             astroObjects = new List<AstronomicalObject>();
             serializer = new SerializerXml();
         }
@@ -29,8 +31,9 @@ namespace UniverseEditor
 
         public Service(ISerializationProcessing serializationProcessing)
         {
+            AdditonalSettings = 0;
             astroObjects = new List<AstronomicalObject>();
-            serializer = new SpecialSerializer(serializationProcessing);
+            serializer = new SpecialSerializer(serializationProcessing, AdditonalSettings);
         }
 
         public void AddTypes(List<Type> types)

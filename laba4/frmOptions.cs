@@ -12,13 +12,17 @@ using System.IO;
 namespace UniverseEditor
 {
     public enum SerializationFormat : byte { Xml, Json };
+    public enum SerializationOptions : byte { None = 0, WriteIndent = 1};
     public partial class frmOptions : Form 
     {
+
+        const int settingsAmount = 5;
     
         SerializationFormat saveFrom;
         SerializationFormat saveTo;
         SerializationFormat loadFrom;
         SerializationFormat loadTo;
+        SerializationOptions additionalOptions;
 
         string settingsFileName;
 
@@ -36,7 +40,7 @@ namespace UniverseEditor
             }
             try
             {
-                int requiredAmount = 4;//SaveFrom, SaveTo, LoadFrom, LoadTo 
+                int requiredAmount = settingsAmount;//SaveFrom, SaveTo, LoadFrom, LoadTo 
                 byte[] buffer = new byte[requiredAmount];
                 int amount = fin.Read(buffer, 0, requiredAmount);
                 if(amount != requiredAmount)
@@ -49,6 +53,7 @@ namespace UniverseEditor
                     saveTo = (SerializationFormat)buffer[1];
                     loadFrom = (SerializationFormat)buffer[2];
                     loadTo = (SerializationFormat)buffer[3];
+                    additionalOptions = (SerializationOptions)buffer[4];
                 }
 
             }
@@ -69,6 +74,7 @@ namespace UniverseEditor
             saveTo = SerializationFormat.Xml;
             loadFrom = SerializationFormat.Xml;
             loadTo = SerializationFormat.Xml;
+            additionalOptions = SerializationOptions.WriteIndent;
         }
 
         bool saveSettings()
@@ -77,8 +83,8 @@ namespace UniverseEditor
             FileStream fout = new FileStream(settingsFileName, FileMode.Create);
             try
             {
-                byte[] buffer = { (byte)saveFrom, (byte)saveTo, (byte)loadFrom, (byte)loadTo};
-                fout.Write(buffer, 0, 4);
+                byte[] buffer = { (byte)saveFrom, (byte)saveTo, (byte)loadFrom, (byte)loadTo, (byte)additionalOptions};
+                fout.Write(buffer, 0, settingsAmount);
             }
             catch
             {
@@ -116,6 +122,8 @@ namespace UniverseEditor
             cbLoadTo.SelectedItem = loadTo;
             cbSaveFrom.SelectedItem = saveFrom;
             cbSaveTo.SelectedItem = saveTo;
+
+            cbWriteIndent.Checked = (additionalOptions & SerializationOptions.WriteIndent) != 0;
         }
 
         private void frmOptions_Load(object sender, EventArgs e)
@@ -129,6 +137,8 @@ namespace UniverseEditor
             saveTo = (SerializationFormat)cbSaveTo.SelectedItem;
             loadFrom = (SerializationFormat)cbLoadFrom.SelectedItem;
             loadTo = (SerializationFormat)cbLoadTo.SelectedItem;
+            additionalOptions = cbWriteIndent.Checked ? additionalOptions | 
+                SerializationOptions.WriteIndent : SerializationOptions.None;//correct later
             saveSettings();
             this.Close();
         }
