@@ -13,8 +13,13 @@ namespace UniverseEditor
         {
             string jsonString;
             Token[] tokens = XmlLexer.GetTokens(source);
+            tokens = XmlLexer.AddArray(new List<string> { "AstronomicalObject", "UidHash" },
+                new List<string>() { "AstroObjects", "AstroObjectsEditors" }, tokens);
             XmlToJsonParser parser = new XmlToJsonParser((SerializationOptions)additionalOptions);
             jsonString = parser.GetJsonString(tokens);
+            string removeString = "\"SaveInfo\": ";
+            jsonString = jsonString.Substring(removeString.Length, jsonString.Length
+                - removeString.Length);
             return jsonString;
         }
 

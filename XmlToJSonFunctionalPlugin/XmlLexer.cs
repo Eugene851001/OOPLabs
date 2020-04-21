@@ -6,7 +6,8 @@ using System.Text.RegularExpressions;
 namespace XmlToJSonFunctionalPlugin
 {
 
-    public enum TokenType {Uknown, OpenBracket, CloseBracket, Value, Version, WhiteSpace};
+    public enum TokenType {Uknown, OpenBracket, CloseBracket, Value, Version, 
+        WhiteSpace, OpenArray, CloseArray, OpenArrayElement, CloseArrayElement}
     public struct Token
     {
         public TokenType Type;
@@ -22,6 +23,7 @@ namespace XmlToJSonFunctionalPlugin
             return base.GetHashCode();
         }
     }
+
     class XmlLexer
     {
         public static Token[] GetTokens(string source)
@@ -59,6 +61,37 @@ namespace XmlToJSonFunctionalPlugin
                 tokens.Add(token);
             }
             return tokens.ToArray();
+        }
+
+        public static Token[] AddArray(List<string> elementsNames, List<string> arraysNames,Token[] source)
+        {
+            List<Token> result = new List<Token>();
+            foreach(Token token in source)
+            {
+                if(token.Type == TokenType.OpenBracket  && elementsNames.Contains(token.Value))
+                {
+                    result.Add(new Token() { Type = TokenType.OpenArrayElement });
+                }
+                else if(token.Type == TokenType.CloseBracket && elementsNames.Contains(token.Value))
+                {
+                    result.Add(new Token() { Type = TokenType.CloseArrayElement });
+                }
+                else if (token.Type == TokenType.OpenBracket && arraysNames.Contains(token.Value))
+                {
+                    result.Add(token);
+                    result.Add(new Token() { Type = TokenType.OpenArray });
+                }
+                else if(token.Type == TokenType.CloseBracket && arraysNames.Contains(token.Value))
+                {
+                    result.Add(new Token() { Type = TokenType.CloseArray });
+                    result.Add(token);
+                }
+                else
+                {
+                    result.Add(token);
+                }
+            }
+            return result.ToArray();
         }
     }
 }

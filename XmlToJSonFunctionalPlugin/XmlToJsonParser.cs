@@ -17,10 +17,12 @@ namespace XmlToJSonFunctionalPlugin
 
         string openComplexBrackets = ":{";
         string closeComplexBrackets = "}";
+        string openArrayBrackets = ": [";
+        string closeArrayBrackets = "]";
         string nextLine = "";
         string delimeter = ",";
         string currentTab = "";
-        string tab = "  ";
+        string tab = "";
 
         public XmlToJsonParser()
         {
@@ -31,11 +33,93 @@ namespace XmlToJSonFunctionalPlugin
             this.additionalOptions = serializationOptions;
             if((serializationOptions & SerializationOptions.WriteIndent) != 0)
             {
+                tab = "  ";
                 nextLine = "\r\n";
                 openComplexBrackets = ": {\r\n";
+                openArrayBrackets = ": [\r\n";
                 delimeter = ", \r\n";
             }
         }
+
+        bool isNumeric(string str)
+        {
+            bool result = true;
+            try
+            {
+                int i = int.Parse(str);
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        bool addValue(int index)
+        {
+            string value = tokens[index].Value;
+            if (isNumeric(value) || value.Equals("true") || value.Equals("false"))
+            {
+                jsonString += value;
+            }
+            else
+            {
+                jsonString += "\"" + value + "\"";
+            }
+            return true;
+        }
+
+        bool addOpenBrackets()
+        {
+            currentTab += tab;
+            jsonString += openComplexBrackets + currentTab;
+            return true;
+        }
+
+        bool addCloseBracket()
+        {
+            if (currentTab.Length > 0 || tab.Length == 0)
+            {
+                jsonString += nextLine + (currentTab = currentTab.
+                    Substring(0, currentTab.Length - tab.Length)) + closeComplexBrackets;
+            }
+            return true;
+        }
+
+        bool addOpenArrayElement()
+        {
+            currentTab += tab;
+            jsonString += "{" + nextLine + currentTab;
+            return true;
+        }
+
+        bool addCloseArrayElement()
+        {
+            if(currentTab.Length > 0 || tab.Length == 0)
+            {
+                jsonString += nextLine + (currentTab = currentTab.
+                    Substring(0, currentTab.Length - tab.Length)) + "}";
+            }
+            return true;
+        }
+
+        bool addOpenArray()
+        {
+            jsonString += openArrayBrackets + (currentTab += tab);
+
+            return true;
+        }
+
+        bool addCloseArray()
+        {
+            if (currentTab.Length > 0 || tab.Length == 0)
+            {
+                jsonString += nextLine + (currentTab = currentTab.
+                    Substring(0, currentTab.Length - tab.Length)) + closeArrayBrackets;
+            }
+            return true;
+        }
+
 
         bool Term(Token expected)
         {
@@ -65,7 +149,7 @@ namespace XmlToJSonFunctionalPlugin
         {
             int SaveNext = Next;
             return Term(new Token() { Type = TokenType.Value })
-                && (jsonString += tokens[SaveNext].Value) != null;
+                && addValue(SaveNext);
         }
 
         bool Value()
@@ -113,9 +197,36 @@ namespace XmlToJSonFunctionalPlugin
         bool ComplexExpression()
         {
             return OptionalVersion() && OptionalWhiteSpace() && OpenBracket() && 
-                (jsonString += openComplexBrackets + (currentTab += tab)) != null && OptionalWhiteSpace() && Expression() 
-                && OptionalWhiteSpace()&& CloseBracket() && (jsonString += nextLine + (currentTab = currentTab.
-                Substring(0, currentTab.Length - tab.Length)) + closeComplexBrackets) != null && OptionalExpression() ;
+                addOpenBrackets() && OptionalWhiteSpace() && Expression() 
+                && OptionalWhiteSpace()&& CloseBracket() && addCloseBracket() && OptionalExpression() ;
+        }
+
+        bool OptionalArrayElementsSequence()
+        {
+            int saveNext = Next;
+            char[] saveBufferJson = new char[jsonString.Length];
+            jsonString.CopyTo(0, saveBufferJson, 0, jsonString.Length);
+            string saveString = new string(saveBufferJson);
+            jsonString += delimeter;
+            jsonString += currentTab;
+            return ArrayElement() ||(Next = saveNext) != -1 && (jsonString = saveString) != null;
+        }
+
+        bool ArrayElement()
+        {
+            return Term(new Token() { Type = TokenType.OpenArrayElement }) && addOpenArrayElement()
+                && OptionalWhiteSpace() && Expression() && OptionalWhiteSpace() &&
+                Term(new Token() { Type = TokenType.CloseArrayElement }) && addCloseArrayElement()
+                && OptionalWhiteSpace();
+        }
+
+        bool Array()
+        {
+            return OptionalVersion() && OptionalWhiteSpace() && OpenBracket() && OptionalWhiteSpace()
+                && Term(new Token() { Type = TokenType.OpenArray }) && addOpenArray() 
+                && OptionalWhiteSpace() && ArrayElement() && OptionalWhiteSpace() && 
+                OptionalArrayElementsSequence() && Term(new Token { Type = TokenType.CloseArray }) 
+                && addCloseArray() && OptionalWhiteSpace() && CloseBracket() && OptionalExpression();
         }
          
         bool Expression()
@@ -128,7 +239,9 @@ namespace XmlToJSonFunctionalPlugin
             currentTab.CopyTo(0, saveBufferTab, 0, saveBufferTab.Length);
             string saveTab = new string(saveBufferTab);
             return ComplexExpression() || (Next = SaveNext) != -1 && (jsonString = 
-               saveString) != null && (currentTab = saveTab) != null && SimpleExpression();
+               saveString) != null && (currentTab = saveTab) != null && SimpleExpression() 
+               || (Next = SaveNext) != -1 && (jsonString = saveString) != null 
+               && (currentTab = saveTab) != null && Array();
         }
 
         public string GetJsonString(Token[] tokens)

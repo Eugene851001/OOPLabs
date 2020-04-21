@@ -27,7 +27,11 @@ namespace UniverseEditor
                 XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo), types);
                 formatter.Serialize(writer, obj);
                 string processedString = processSerialization.OnSave(writer.ToString(), AdditionalSettings);
-              //  string processedString = processSerialization.OnSave("<Name>Karl</Name><Posision><X>0</X><Y>0</Y></Position>");
+           //     string processedString = processSerialization.OnSave(
+             //       "<AstroObjects><AstronomicalObject><Name>Sun</Name></AstronomicalObject>" +
+               //     "<AstronomicalObject><Name>Earth</Name></AstronomicalObject></AstroObjects>" +
+                 //   "<UidHash><AstroObjectsEditors><uid>0</uid><hash>1</hash>"+ 
+                   // "AstroObjectsEditors</UidHash>", AdditionalSettings);
                 fout.Write(Encoding.ASCII.GetBytes(processedString), 0, 
                     Encoding.ASCII.GetBytes(processedString).Length);
                 writer.Close();
