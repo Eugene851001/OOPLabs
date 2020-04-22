@@ -30,12 +30,14 @@ namespace Universe
             Planet planet) : base(name, pos, mass, size)
         {
             MainPlanet = planet;
+            MainPlanet.Name = "Unknown";
             AddToParent();
         }
 
         public Satellite(): base()
         {
             MainPlanet = new Planet();
+            MainPlanet.Name = "Unknown";
         }
 
         public void AddToParent()

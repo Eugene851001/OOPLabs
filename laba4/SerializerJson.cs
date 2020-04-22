@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using System.Runtime.Serialization.Json;
 
 namespace UniverseEditor
 {
@@ -30,12 +31,9 @@ namespace UniverseEditor
             FileStream fin = new FileStream(path, FileMode.Open);
             SaveInfo info;
             try
-            {
-                string jsonString = "";
-                byte[] buffer = new byte[fin.Length];
-                fin.Read(buffer, 0, (int)fin.Length);
-                jsonString = Encoding.ASCII.GetString(buffer);
-                info = (SaveInfo)JsonSerializer.Deserialize(jsonString, typeof(SaveInfo));
+            { 
+                var jsonSerializer = new DataContractJsonSerializer(typeof(SaveInfo), types);
+                info = (SaveInfo)jsonSerializer.ReadObject(fin);
             }
             catch
             {

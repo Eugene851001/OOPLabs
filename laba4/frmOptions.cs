@@ -131,14 +131,39 @@ namespace UniverseEditor
 
         }
 
+        bool  checkOptions()
+        {
+            bool result = true;
+            string message = "conversion from json to xml is not possible";
+            if ((SerializationFormat)cbSaveFrom.SelectedItem == SerializationFormat.Json 
+                && (SerializationFormat)cbSaveTo.SelectedItem == SerializationFormat.Xml)
+            {
+                MessageBox.Show(message, "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbSaveFrom.SelectedItem = SerializationFormat.Xml;
+                result = false;
+            }
+            if((SerializationFormat)cbLoadFrom.SelectedItem == SerializationFormat.Json 
+                && (SerializationFormat)cbLoadTo.SelectedItem == SerializationFormat.Xml)
+            {
+                MessageBox.Show(message, "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbLoadFrom.SelectedItem = SerializationFormat.Xml;
+                result = false;
+            }
+            return result;
+        }
+
         private void btApply_Click(object sender, EventArgs e)
         {
+            if (!checkOptions())
+                return;
             saveFrom = (SerializationFormat)cbSaveFrom.SelectedItem;
             saveTo = (SerializationFormat)cbSaveTo.SelectedItem;
             loadFrom = (SerializationFormat)cbLoadFrom.SelectedItem;
             loadTo = (SerializationFormat)cbLoadTo.SelectedItem;
-            additionalOptions = cbWriteIndent.Checked ? additionalOptions | 
-                SerializationOptions.WriteIndent : SerializationOptions.None;//correct later
+            additionalOptions = 0;
+            additionalOptions = cbWriteIndent.Checked ? 
+                additionalOptions | SerializationOptions.WriteIndent 
+                : additionalOptions;//correct later
             saveSettings();
             this.Close();
         }

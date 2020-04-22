@@ -19,6 +19,8 @@ namespace OOPLaba3
 
         SerializationFormat SaveTo;
         SerializationFormat SaveFrom;
+        SerializationFormat LoadTo;
+        SerializationFormat LoadFrom;
         SerializationOptions additionalOptions;
 
         bool isLoadedFunctionalPlugin = false;
@@ -37,13 +39,10 @@ namespace OOPLaba3
                 isLoadedFunctionalPlugin = true;
                 if (LoadSettings())
                     ApplySettings();
-                else
-                    astroService = new Service();
             }
             else
             {
                 isLoadedFunctionalPlugin = false;
-                astroService = new Service();
             }
             astroEditors = new Dictionary<int, EditObject>();//uid-editor
             astroHashEditors = new Dictionary<int, EditObject>();
@@ -78,6 +77,8 @@ namespace OOPLaba3
                     result = false;
                 SaveFrom = (SerializationFormat)buffer[0];
                 SaveTo = (SerializationFormat)buffer[1];
+                LoadFrom = (SerializationFormat)buffer[2];
+                LoadTo = (SerializationFormat)buffer[3];
                 additionalOptions = (SerializationOptions)buffer[4];
             }
             catch
@@ -93,15 +94,52 @@ namespace OOPLaba3
 
         void ApplySettings()
         {
-            if (SaveTo == SerializationFormat.Json)
+            
+            if(SaveFrom == SaveTo)
             {
-                astroService.Serializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
-                astroService.AdditonalSettings = (byte)additionalOptions;
+                if(SaveFrom == SerializationFormat.Xml)
+                {
+                    astroService.Serializer = new SerializerXml();
+                }
+                else
+                {
+                    astroService.Serializer = new SerializerJson();
+                }
             }
             else
-                astroService.Serializer = new SerializerXml();
-            if (SaveFrom == SerializationFormat.Json)
-                astroService.Serializer = new SerializerJson();
+            {
+                if(SaveTo == SerializationFormat.Json)
+                {
+                    astroService.Serializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
+                }
+                else
+                {
+                    astroService.Serializer = new SerializerXml();
+                }
+            }
+
+            if (LoadFrom == LoadTo)
+            {
+                if (LoadFrom == SerializationFormat.Xml)
+                {
+                    astroService.Deserializer = new SerializerXml();
+                }
+                else
+                {
+                    astroService.Deserializer = new SerializerJson();
+                }
+            }
+            else
+            {
+                if (LoadTo == SerializationFormat.Json)
+                {
+                    astroService.Deserializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
+                }
+                else
+                {
+                    astroService.Deserializer = new SerializerXml();
+                }
+            }
         }
 
         void EditNewAstroType(AstronomicalObject astroObj)
@@ -122,7 +160,7 @@ namespace OOPLaba3
             }
         }
 
-        public void UpdateObjectList(AstronomicalObject obj)
+     /*   public void UpdateObjectList(AstronomicalObject obj)
         {
             if (obj is IComplexObj)
             {
@@ -136,7 +174,7 @@ namespace OOPLaba3
                     astroService.astroObjects.Add(obj);
                 }
             }
-        }
+        }*/
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -190,6 +228,7 @@ namespace OOPLaba3
         {
             if (lbStars.SelectedIndex != -1)
             {
+                astroEditors?.Remove(((AstronomicalObject)lbStars.SelectedItem).uid);
                 astroService.Remove((AstronomicalObject)lbStars.SelectedItem, astroEditors, astroHashEditors);
                 UpdateListBox();
             }
@@ -199,7 +238,6 @@ namespace OOPLaba3
         {
             astroEditors[obj.uid](obj);
             astroService.Add(obj, astroEditors, astroHashEditors);
-            //UpdateObjectList(obj);
             astroService.UpdateObjectList(obj);
             UpdateListBox();
         }
@@ -312,7 +350,7 @@ namespace OOPLaba3
         }
 
 
-        EditObject GetDelegate(Type astroType)
+       /* EditObject GetDelegate(Type astroType)
         {
             return new EditObject((AstronomicalObject astroObj) =>
             {
@@ -320,7 +358,8 @@ namespace OOPLaba3
                 frmEditAstro frmEditor = formCreater.GetForm(astroType, astroObj, astroService.AstroObjects);
                 frmEditor.ShowDialog();
             });
-        }
+        }*/
+
         private void btLoadPlugin_Click(object sender, EventArgs e)
         {
             if (OpenPluginFile.ShowDialog() == DialogResult.OK) 

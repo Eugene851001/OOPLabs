@@ -18,15 +18,15 @@ namespace UniverseEditor
             XmlToJsonParser parser = new XmlToJsonParser((SerializationOptions)additionalOptions);
             jsonString = parser.GetJsonString(tokens);
             string removeString = "\"SaveInfo\": ";
-            jsonString = jsonString.Substring(removeString.Length, jsonString.Length
-                - removeString.Length);
+            if(jsonString.Length > removeString.Length)
+                jsonString = jsonString.Substring(removeString.Length, jsonString.Length
+                    - removeString.Length);
             return jsonString;
         }
 
         public string OnLoad(string source)
         {
-            StringBuilder xmlString = new StringBuilder();
-            return xmlString.ToString();
+            return OnSave(source, (byte)SerializationOptions.WriteIndent);
         }
     }
 }

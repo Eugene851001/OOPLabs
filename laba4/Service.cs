@@ -11,7 +11,9 @@ namespace UniverseEditor
         public List<AstronomicalObject> astroObjects;
         public byte AdditonalSettings;
         public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
+        List<Type> types = new List<Type>();
         ISerialize serializer;
+        ISerialize deserializer;
         public ISerialize Serializer
         {
             set
@@ -19,7 +21,15 @@ namespace UniverseEditor
                 serializer = value; 
             }
         }
-        List<Type> types = new List<Type>();
+
+        public ISerialize Deserializer
+        {
+            set
+            {
+                deserializer = value;
+            }
+        }
+   
 
         public Service()
         {
@@ -34,6 +44,7 @@ namespace UniverseEditor
             AdditonalSettings = 0;
             astroObjects = new List<AstronomicalObject>();
             serializer = new SpecialSerializer(serializationProcessing, AdditonalSettings);
+            deserializer = new SpecialSerializer(serializationProcessing, AdditonalSettings);
         }
 
         public void AddTypes(List<Type> types)
@@ -63,7 +74,7 @@ namespace UniverseEditor
         public SaveInfo GetAll()
         {
             SaveInfo info = null;
-            info = (SaveInfo)serializer.Deserialize(FileName, types.ToArray());
+            info = (SaveInfo)deserializer.Deserialize(FileName, types.ToArray());
             if (info == null)
                 return info;
             astroObjects = info.AstroObjects;

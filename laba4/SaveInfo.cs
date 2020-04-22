@@ -46,7 +46,7 @@ namespace UniverseEditor
                 AstroObjects.Add(obj);
             }
             AstroObjectsEditors = new List<UidHash>();
-            foreach(int uid  in astroEditors.Keys)
+            foreach(int uid  in astroEditors?.Keys)
             {
                 foreach(int hash in astroHashEditors.Keys)
                 {
