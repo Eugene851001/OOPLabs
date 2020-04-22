@@ -59,7 +59,7 @@ namespace UniverseEditor
             }
             return result;
         }
-        static bool IsValidPlugin(string fileName)
+        public static bool IsValidPlugin(string fileName)
         {
             try
             {

@@ -43,11 +43,15 @@
             this.btLoadAll = new System.Windows.Forms.Button();
             this.btLoadPlugin = new System.Windows.Forms.Button();
             this.OpenPluginFile = new System.Windows.Forms.OpenFileDialog();
+            this.msMainMenu = new System.Windows.Forms.MenuStrip();
+            this.itemSettigs = new System.Windows.Forms.ToolStripMenuItem();
+            this.btAstroObject = new System.Windows.Forms.Button();
+            this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btEdit
             // 
-            this.btEdit.Location = new System.Drawing.Point(36, 279);
+            this.btEdit.Location = new System.Drawing.Point(36, 295);
             this.btEdit.Name = "btEdit";
             this.btEdit.Size = new System.Drawing.Size(75, 23);
             this.btEdit.TabIndex = 3;
@@ -59,7 +63,7 @@
             // 
             this.lbStars.FormattingEnabled = true;
             this.lbStars.ItemHeight = 16;
-            this.lbStars.Location = new System.Drawing.Point(36, 25);
+            this.lbStars.Location = new System.Drawing.Point(36, 41);
             this.lbStars.Name = "lbStars";
             this.lbStars.Size = new System.Drawing.Size(259, 228);
             this.lbStars.TabIndex = 4;
@@ -67,7 +71,7 @@
             // 
             // btDelete
             // 
-            this.btDelete.Location = new System.Drawing.Point(179, 279);
+            this.btDelete.Location = new System.Drawing.Point(179, 295);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(75, 23);
             this.btDelete.TabIndex = 5;
@@ -77,7 +81,7 @@
             // 
             // btAddStar
             // 
-            this.btAddStar.Location = new System.Drawing.Point(328, 25);
+            this.btAddStar.Location = new System.Drawing.Point(328, 41);
             this.btAddStar.Name = "btAddStar";
             this.btAddStar.Size = new System.Drawing.Size(75, 23);
             this.btAddStar.TabIndex = 6;
@@ -87,7 +91,7 @@
             // 
             // btPlanet
             // 
-            this.btPlanet.Location = new System.Drawing.Point(328, 65);
+            this.btPlanet.Location = new System.Drawing.Point(328, 81);
             this.btPlanet.Name = "btPlanet";
             this.btPlanet.Size = new System.Drawing.Size(75, 28);
             this.btPlanet.TabIndex = 7;
@@ -102,7 +106,7 @@
             // 
             // btAddSatellite
             // 
-            this.btAddSatellite.Location = new System.Drawing.Point(328, 109);
+            this.btAddSatellite.Location = new System.Drawing.Point(328, 125);
             this.btAddSatellite.Name = "btAddSatellite";
             this.btAddSatellite.Size = new System.Drawing.Size(75, 25);
             this.btAddSatellite.TabIndex = 8;
@@ -112,7 +116,7 @@
             // 
             // btBlackHole
             // 
-            this.btBlackHole.Location = new System.Drawing.Point(435, 25);
+            this.btBlackHole.Location = new System.Drawing.Point(435, 41);
             this.btBlackHole.Name = "btBlackHole";
             this.btBlackHole.Size = new System.Drawing.Size(79, 23);
             this.btBlackHole.TabIndex = 9;
@@ -122,7 +126,7 @@
             // 
             // btVariableStar
             // 
-            this.btVariableStar.Location = new System.Drawing.Point(435, 49);
+            this.btVariableStar.Location = new System.Drawing.Point(435, 65);
             this.btVariableStar.Name = "btVariableStar";
             this.btVariableStar.Size = new System.Drawing.Size(79, 44);
             this.btVariableStar.TabIndex = 10;
@@ -132,7 +136,7 @@
             // 
             // btChangeFile
             // 
-            this.btChangeFile.Location = new System.Drawing.Point(435, 352);
+            this.btChangeFile.Location = new System.Drawing.Point(435, 368);
             this.btChangeFile.Name = "btChangeFile";
             this.btChangeFile.Size = new System.Drawing.Size(114, 23);
             this.btChangeFile.TabIndex = 11;
@@ -142,14 +146,14 @@
             // 
             // tbFilePath
             // 
-            this.tbFilePath.Location = new System.Drawing.Point(435, 311);
+            this.tbFilePath.Location = new System.Drawing.Point(435, 327);
             this.tbFilePath.Name = "tbFilePath";
             this.tbFilePath.Size = new System.Drawing.Size(114, 22);
             this.tbFilePath.TabIndex = 12;
             // 
             // btLoadAll
             // 
-            this.btLoadAll.Location = new System.Drawing.Point(435, 381);
+            this.btLoadAll.Location = new System.Drawing.Point(435, 397);
             this.btLoadAll.Name = "btLoadAll";
             this.btLoadAll.Size = new System.Drawing.Size(110, 23);
             this.btLoadAll.TabIndex = 13;
@@ -159,7 +163,7 @@
             // 
             // btLoadPlugin
             // 
-            this.btLoadPlugin.Location = new System.Drawing.Point(435, 415);
+            this.btLoadPlugin.Location = new System.Drawing.Point(435, 431);
             this.btLoadPlugin.Name = "btLoadPlugin";
             this.btLoadPlugin.Size = new System.Drawing.Size(110, 23);
             this.btLoadPlugin.TabIndex = 14;
@@ -172,11 +176,40 @@
             this.OpenPluginFile.FileName = "openFileDialog1";
             this.OpenPluginFile.Filter = "Dll файлы (*.dll)|*.dll";
             // 
+            // msMainMenu
+            // 
+            this.msMainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemSettigs});
+            this.msMainMenu.Location = new System.Drawing.Point(0, 0);
+            this.msMainMenu.Name = "msMainMenu";
+            this.msMainMenu.Size = new System.Drawing.Size(595, 28);
+            this.msMainMenu.TabIndex = 15;
+            this.msMainMenu.Text = "menuStrip1";
+            // 
+            // itemSettigs
+            // 
+            this.itemSettigs.Name = "itemSettigs";
+            this.itemSettigs.Size = new System.Drawing.Size(75, 24);
+            this.itemSettigs.Text = "Options";
+            this.itemSettigs.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // btAstroObject
+            // 
+            this.btAstroObject.Location = new System.Drawing.Point(328, 170);
+            this.btAstroObject.Name = "btAstroObject";
+            this.btAstroObject.Size = new System.Drawing.Size(75, 23);
+            this.btAstroObject.TabIndex = 16;
+            this.btAstroObject.Text = "Basic";
+            this.btAstroObject.UseVisualStyleBackColor = true;
+            this.btAstroObject.Click += new System.EventHandler(this.btAstroObject_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 450);
+            this.ClientSize = new System.Drawing.Size(595, 471);
+            this.Controls.Add(this.btAstroObject);
             this.Controls.Add(this.btLoadPlugin);
             this.Controls.Add(this.btLoadAll);
             this.Controls.Add(this.tbFilePath);
@@ -189,10 +222,14 @@
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.lbStars);
             this.Controls.Add(this.btEdit);
+            this.Controls.Add(this.msMainMenu);
+            this.MainMenuStrip = this.msMainMenu;
             this.Name = "frmMain";
             this.Text = "Astronomical Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.msMainMenu.ResumeLayout(false);
+            this.msMainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +251,9 @@
         private System.Windows.Forms.Button btLoadAll;
         private System.Windows.Forms.Button btLoadPlugin;
         private System.Windows.Forms.OpenFileDialog OpenPluginFile;
+        private System.Windows.Forms.MenuStrip msMainMenu;
+        private System.Windows.Forms.ToolStripMenuItem itemSettigs;
+        private System.Windows.Forms.Button btAstroObject;
     }
 }
 

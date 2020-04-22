@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <SaveInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AstroObjects>
-    <AstronomicalObject xsi:type="GalacticStar">
+    <AstronomicalObject xsi:type="Star">
+      <Name>Sun</Name>
       <Position>
         <X>0</X>
         <Y>0</Y>
@@ -10,40 +11,13 @@
       <IsDestroy>false</IsDestroy>
       <Size>0</Size>
       <uid>0</uid>
-      <Name>Sun</Name>
       <Temperature>0</Temperature>
-      <MainObject xsi:type="Galaxy">
-        <Position>
-          <X>0</X>
-          <Y>0</Y>
-        </Position>
-        <Mass>0</Mass>
-        <IsDestroy>false</IsDestroy>
-        <Size>0</Size>
-        <uid>2</uid>
-        <Name />
-      </MainObject>
-    </AstronomicalObject>
-    <AstronomicalObject xsi:type="Galaxy">
-      <Position>
-        <X>0</X>
-        <Y>0</Y>
-      </Position>
-      <Mass>0</Mass>
-      <IsDestroy>false</IsDestroy>
-      <Size>0</Size>
-      <uid>3</uid>
-      <Name>Milky Way</Name>
     </AstronomicalObject>
   </AstroObjects>
   <AstroObjectsEditors>
     <UidHash>
       <Uid>0</Uid>
-      <Hash>5</Hash>
-    </UidHash>
-    <UidHash>
-      <Uid>3</Uid>
-      <Hash>5</Hash>
+      <Hash>1</Hash>
     </UidHash>
   </AstroObjectsEditors>
 </SaveInfo>

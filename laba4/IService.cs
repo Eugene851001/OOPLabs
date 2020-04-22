@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPLaba3;
+using Universe;
 
-namespace Universe
+namespace UniverseEditor
 {
     interface IService
     {

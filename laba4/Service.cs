@@ -1,21 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using OOPLaba3;
+using Universe;
 
-namespace Universe
+namespace UniverseEditor
 {
     class Service: IService
     {
         public string FileName = "Service.txt";
-        public List<AstronomicalObject> astroObjects = new List<AstronomicalObject>();
+        public List<AstronomicalObject> astroObjects;
+        public byte AdditonalSettings;
         public List<AstronomicalObject> AstroObjects { get { return astroObjects; } }
-        SerializerXml serializer = new SerializerXml();
         List<Type> types = new List<Type>();
+        ISerialize serializer;
+        ISerialize deserializer;
+        public ISerialize Serializer
+        {
+            set
+            {
+                serializer = value; 
+            }
+        }
+
+        public ISerialize Deserializer
+        {
+            set
+            {
+                deserializer = value;
+            }
+        }
+   
+
+        public Service()
+        {
+            AdditonalSettings = 0;
+            astroObjects = new List<AstronomicalObject>();
+            serializer = new SerializerXml();
+        }
+
+
+        public Service(ISerializationProcessing serializationProcessing)
+        {
+            AdditonalSettings = 0;
+            astroObjects = new List<AstronomicalObject>();
+            serializer = new SpecialSerializer(serializationProcessing, AdditonalSettings);
+            deserializer = new SpecialSerializer(serializationProcessing, AdditonalSettings);
+        }
 
         public void AddTypes(List<Type> types)
         {
@@ -44,7 +74,7 @@ namespace Universe
         public SaveInfo GetAll()
         {
             SaveInfo info = null;
-            info = (SaveInfo)serializer.Deserialize(FileName, types.ToArray());
+            info = (SaveInfo)deserializer.Deserialize(FileName, types.ToArray());
             if (info == null)
                 return info;
             astroObjects = info.AstroObjects;
@@ -148,6 +178,7 @@ namespace Universe
                 return null;
             return astroObjects[i - 1];
         }
+
         public void RemoveAll()
         {
             astroObjects.Clear();

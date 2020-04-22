@@ -31,6 +31,7 @@ namespace Universe
         {
             satellites = new List<AstronomicalObject>();
             MainStar = new Star();
+            MainStar.Name = "Unkmown";
             AddToParent();
         }
         public Planet(string name, Point pos, double mass,

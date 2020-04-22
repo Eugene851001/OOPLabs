@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Universe;
 
-namespace OOPLaba3
+namespace UniverseEditor
 {
     public delegate void EditObject(AstronomicalObject obj);
 
     public class UidHash
     {
-        public int Uid;
-        public int Hash;
+        public int Uid { get; set; }
+        public int Hash { get; set; }
 
         public UidHash()
         {
@@ -28,8 +28,8 @@ namespace OOPLaba3
 
     public class SaveInfo
     {
-        public List<AstronomicalObject> AstroObjects;
-        public List<UidHash> AstroObjectsEditors;
+        public List<AstronomicalObject> AstroObjects { set; get; }
+        public List<UidHash> AstroObjectsEditors { set; get; }
 
         public SaveInfo()
         {
@@ -46,7 +46,7 @@ namespace OOPLaba3
                 AstroObjects.Add(obj);
             }
             AstroObjectsEditors = new List<UidHash>();
-            foreach(int uid  in astroEditors.Keys)
+            foreach(int uid  in astroEditors?.Keys)
             {
                 foreach(int hash in astroHashEditors.Keys)
                 {
