@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Keys.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdditionalProcessing\AdditionalProcessing.csproj" />
+    <ProjectReference Include="..\FunctionalPluginBase\FunctionalPluginBase.csproj" />
+  </ItemGroup>
+
+</Project>

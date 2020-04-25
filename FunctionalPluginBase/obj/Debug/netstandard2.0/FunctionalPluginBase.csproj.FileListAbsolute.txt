@@ -1,0 +1,8 @@
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\bin\Debug\netstandard2.0\FunctionalPluginBase.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\bin\Debug\netstandard2.0\FunctionalPluginBase.dll
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\bin\Debug\netstandard2.0\FunctionalPluginBase.pdb
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\obj\Debug\netstandard2.0\FunctionalPluginBase.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\obj\Debug\netstandard2.0\FunctionalPluginBase.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\obj\Debug\netstandard2.0\FunctionalPluginBase.dll
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\obj\Debug\netstandard2.0\FunctionalPluginBase.pdb
+E:\4 сем\ООП\OOP\OOPLabs\FunctionalPluginBase\obj\Debug\netstandard2.0\FunctionalPluginBase.csprojAssemblyReference.cache

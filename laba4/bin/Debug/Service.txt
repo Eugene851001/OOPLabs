@@ -13,11 +13,39 @@
       <uid>0</uid>
       <Temperature>0</Temperature>
     </AstronomicalObject>
+    <AstronomicalObject xsi:type="Planet">
+      <Name>Earth</Name>
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <Mass>0</Mass>
+      <IsDestroy>false</IsDestroy>
+      <Size>0</Size>
+      <uid>5</uid>
+      <Albedo>0</Albedo>
+      <MainObject xsi:type="Star">
+        <Name>Sun</Name>
+        <Position>
+          <X>0</X>
+          <Y>0</Y>
+        </Position>
+        <Mass>0</Mass>
+        <IsDestroy>false</IsDestroy>
+        <Size>0</Size>
+        <uid>0</uid>
+        <Temperature>0</Temperature>
+      </MainObject>
+    </AstronomicalObject>
   </AstroObjects>
   <AstroObjectsEditors>
     <UidHash>
       <Uid>0</Uid>
       <Hash>1</Hash>
+    </UidHash>
+    <UidHash>
+      <Uid>5</Uid>
+      <Hash>2</Hash>
     </UidHash>
   </AstroObjectsEditors>
 </SaveInfo>

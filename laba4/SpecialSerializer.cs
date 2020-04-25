@@ -11,11 +11,23 @@ namespace UniverseEditor
 {
     class SpecialSerializer: ISerialize
     {
-        ISerializationProcessing processSerialization;
+        public ISerializationProcessing processSerialization;
         public byte AdditionalSettings;
+        public IStringSerialize Serializer;
+        public IStringSerialize Deserializer;
 
+
+        public SpecialSerializer()
+        {
+            Serializer = new SerializerXml();
+            Deserializer = new SerializerXml();
+            AdditionalSettings = 0;
+            this.processSerialization = null;
+        }
         public SpecialSerializer(ISerializationProcessing processSerialization, byte additionalSettings)
         {
+            Serializer = new SerializerXml();
+            Deserializer = new SerializerXml();
             AdditionalSettings = additionalSettings;
             this.processSerialization = processSerialization;
         }
@@ -25,9 +37,16 @@ namespace UniverseEditor
             try
             {
                 StringWriter writer = new StringWriter();
-                XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo), types);
-                formatter.Serialize(writer, obj);
-                string processedString = processSerialization.OnSave(writer.ToString(), AdditionalSettings);
+                string serilizedString = Serializer.SerializeString(obj, types);
+                string processedString;
+                if(processSerialization != null)
+                { 
+                    processedString = processSerialization?.OnSave(serilizedString, AdditionalSettings); 
+                }
+                else
+                {
+                    processedString = serilizedString;
+                }
                 fout.Write(Encoding.ASCII.GetBytes(processedString), 0, 
                     Encoding.ASCII.GetBytes(processedString).Length);
                 writer.Close();
@@ -47,10 +66,16 @@ namespace UniverseEditor
                 byte[] buffer = new byte[fin.Length];
                 fin.Read(buffer, 0, (int)fin.Length);
                 string source = Encoding.ASCII.GetString(buffer);
-                string result = processSerialization.OnLoad(source);
-                MemoryStream container = new MemoryStream(Encoding.ASCII.GetBytes(result));
-                var jsonSerializer = new DataContractJsonSerializer(typeof(SaveInfo), types);
-                info = (SaveInfo)jsonSerializer.ReadObject(container);
+                string result;
+                if (processSerialization != null)
+                {
+                    result = processSerialization.OnLoad(source);
+                }
+                else
+                {
+                    result = source;
+                }
+                info = (SaveInfo)Deserializer.DeserializeString(result, types);
             }
             finally
             {

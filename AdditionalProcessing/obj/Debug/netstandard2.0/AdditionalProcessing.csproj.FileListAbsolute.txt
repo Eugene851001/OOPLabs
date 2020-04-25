@@ -1,0 +1,7 @@
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\bin\Debug\netstandard2.0\AdditionalProcessing.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\bin\Debug\netstandard2.0\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\bin\Debug\netstandard2.0\AdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\obj\Debug\netstandard2.0\AdditionalProcessing.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\obj\Debug\netstandard2.0\AdditionalProcessing.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\obj\Debug\netstandard2.0\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\AdditionalProcessing\obj\Debug\netstandard2.0\AdditionalProcessing.pdb

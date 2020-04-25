@@ -1,0 +1,11 @@
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\bin\Debug\netstandard2.0\ArchivedAdditionalProcessing.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\bin\Debug\netstandard2.0\ArchivedAdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\bin\Debug\netstandard2.0\ArchivedAdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\bin\Debug\netstandard2.0\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\bin\Debug\netstandard2.0\AdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.csprojAssemblyReference.cache
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.csproj.CopyComplete
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\ArchivedAdditionalProcessing\obj\Debug\netstandard2.0\ArchivedAdditionalProcessing.pdb

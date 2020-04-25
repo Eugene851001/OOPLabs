@@ -9,8 +9,23 @@ using System.Runtime.Serialization.Json;
 
 namespace UniverseEditor
 {
-    class SerializerJson: ISerialize
+    class SerializerJson: ISerialize, IStringSerialize
     {
+
+        public string SerializeString(object obj, Type[] types)
+        {
+            return JsonSerializer.Serialize(obj, new JsonSerializerOptions() { WriteIndented = true });
+        }
+
+        public object DeserializeString(string source, Type[] types)
+        {
+            MemoryStream stream = new MemoryStream(Encoding.ASCII.GetBytes(source));
+            var jsonSerializer = new DataContractJsonSerializer(typeof(SaveInfo), types);
+            SaveInfo info;
+            info = (SaveInfo)jsonSerializer.ReadObject(stream);
+            return info;
+        }
+
         public void Serialize(object obj, string path, Type[] types)
         {
 
