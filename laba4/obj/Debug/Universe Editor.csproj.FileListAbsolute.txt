@@ -131,3 +131,9 @@ E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Encodings.Web.xml
 E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Text.Json.xml
 E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\System.ValueTuple.xml
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\AdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\FunctionalPluginBase.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\SharshoonAdapter.dll
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\FunctionalPluginBase.pdb
+E:\4 сем\ООП\OOP\OOPLabs\laba4\bin\Debug\SharshoonAdapter.pdb

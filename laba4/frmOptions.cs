@@ -16,13 +16,14 @@ namespace UniverseEditor
     public partial class frmOptions : Form 
     {
 
-        const int settingsAmount = 5;
+        const int settingsAmount = 6;
     
         SerializationFormat saveFrom;
         SerializationFormat saveTo;
         SerializationFormat loadFrom;
         SerializationFormat loadTo;
         SerializationOptions additionalOptions;
+        bool isArchive;
 
         string settingsFileName;
 
@@ -54,6 +55,7 @@ namespace UniverseEditor
                     loadFrom = (SerializationFormat)buffer[2];
                     loadTo = (SerializationFormat)buffer[3];
                     additionalOptions = (SerializationOptions)buffer[4];
+                    isArchive = (buffer[5] != 0);
                 }
 
             }
@@ -75,6 +77,7 @@ namespace UniverseEditor
             loadFrom = SerializationFormat.Xml;
             loadTo = SerializationFormat.Xml;
             additionalOptions = SerializationOptions.WriteIndent;
+            isArchive = false;
         }
 
         bool saveSettings()
@@ -83,7 +86,8 @@ namespace UniverseEditor
             FileStream fout = new FileStream(settingsFileName, FileMode.Create);
             try
             {
-                byte[] buffer = { (byte)saveFrom, (byte)saveTo, (byte)loadFrom, (byte)loadTo, (byte)additionalOptions};
+                byte[] buffer = { (byte)saveFrom, (byte)saveTo, (byte)loadFrom, 
+                    (byte)loadTo, (byte)additionalOptions, (byte)(isArchive ? 1 : 0) };
                 fout.Write(buffer, 0, settingsAmount);
             }
             catch
@@ -122,6 +126,7 @@ namespace UniverseEditor
             cbLoadTo.SelectedItem = loadTo;
             cbSaveFrom.SelectedItem = saveFrom;
             cbSaveTo.SelectedItem = saveTo;
+            cbArchive.Checked = isArchive;
 
             cbWriteIndent.Checked = (additionalOptions & SerializationOptions.WriteIndent) != 0;
         }
@@ -160,10 +165,11 @@ namespace UniverseEditor
             saveTo = (SerializationFormat)cbSaveTo.SelectedItem;
             loadFrom = (SerializationFormat)cbLoadFrom.SelectedItem;
             loadTo = (SerializationFormat)cbLoadTo.SelectedItem;
+            isArchive = cbArchive.Checked;
             additionalOptions = 0;
             additionalOptions = cbWriteIndent.Checked ? 
                 additionalOptions | SerializationOptions.WriteIndent 
-                : additionalOptions;//correct later
+                : additionalOptions;
             saveSettings();
             this.Close();
         }

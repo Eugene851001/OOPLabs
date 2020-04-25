@@ -26,3 +26,9 @@ E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.
 E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\System.Threading.Tasks.Extensions.xml
 E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.xml
 E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\FunctionalPluginBase.dll
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\SharshoonAdapter.dll
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\AdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\FunctionalPluginBase.pdb
+E:\4 сем\ООП\OOP\OOPLabs\XmlToJSonFunctionalPlugin\bin\Debug\netstandard2.0\SharshoonAdapter.pdb

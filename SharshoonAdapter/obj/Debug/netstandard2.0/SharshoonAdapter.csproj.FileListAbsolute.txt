@@ -1,0 +1,13 @@
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\SharshoonAdapter.deps.json
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\SharshoonAdapter.dll
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\SharshoonAdapter.pdb
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.AssemblyInfoInputs.cache
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.AssemblyInfo.cs
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.dll
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.pdb
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.csprojAssemblyReference.cache
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\obj\Debug\netstandard2.0\SharshoonAdapter.csproj.CopyComplete
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\AdditionalProcessing.dll
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\AdditionalProcessing.pdb
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\FunctionalPluginBase.dll
+E:\4 сем\ООП\OOP\OOPLabs\SharshoonAdapter\bin\Debug\netstandard2.0\FunctionalPluginBase.pdb

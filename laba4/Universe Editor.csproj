@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="AstroFormCreater.cs" />
     <Compile Include="AstroPluginLoader.cs" />
+    <Compile Include="CompositeProcessing.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,9 +152,9 @@
     </Compile>
     <Compile Include="FunctionalPluginLoader.cs" />
     <Compile Include="IAstroFormGetter.cs" />
-    <Compile Include="ISerializationProcessing.cs" />
     <Compile Include="ISerialize.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="IStringSerialize.cs" />
     <Compile Include="SerializerJson.cs" />
     <Compile Include="MainFormButtonCreater.cs" />
     <Compile Include="Program.cs" />
@@ -225,6 +226,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdditionalProcessing\AdditionalProcessing.csproj">
+      <Project>{c705b089-1fc3-43e0-9fdb-4a528c388b19}</Project>
+      <Name>AdditionalProcessing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FunctionalPluginBase\FunctionalPluginBase.csproj">
+      <Project>{77bf50fb-6f4f-4482-b28c-090d13a09cf4}</Project>
+      <Name>FunctionalPluginBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharshoonAdapter\SharshoonAdapter.csproj">
+      <Project>{6b91e5df-1f03-4597-bd92-e7803a5367b7}</Project>
+      <Name>SharshoonAdapter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UniverseMain\UniverseMain.csproj">
       <Project>{51393d31-57bd-4f24-8257-73f428d244bd}</Project>
       <Name>UniverseMain</Name>

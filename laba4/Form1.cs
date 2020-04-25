@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.IO;
 using Universe;
 using UniverseEditor;
+using FunctionalPluginAdapter;
+using AdditionalProcessing;
 
 namespace OOPLaba3
 {
@@ -23,26 +25,42 @@ namespace OOPLaba3
         SerializationFormat LoadFrom;
         SerializationOptions additionalOptions;
 
-        bool isLoadedFunctionalPlugin = false;
+        bool isArchive;
+        bool isLoadedFunctionalPlugin = true;
         string settingsFileName = "Settings.ini";
 
         List<ISerializationProcessing> serializationHandlers;
+        List<IAdditionalProcessing> additionalProcessingHandlers;
+        ISerializationProcessing eugeneProcessing = null;
+        IAdditionalProcessing sharshoonProcessing = null;
 
         public frmMain()  
         {
             InitializeComponent();
+
             string path = Path.GetFullPath("../../../XmlToJSonFunctionalPlugin/bin/Debug/netstandard2.0/XmlToJSonFunctionalPlugin.dll");
             serializationHandlers = FunctionalPluginLoader.LoadPlugin(path);
             astroService = new Service();
-            if(serializationHandlers != null)
+            if(serializationHandlers != null && serializationHandlers.Count > 0)
             {
-                isLoadedFunctionalPlugin = true;
-                if (LoadSettings())
-                    ApplySettings();
+                eugeneProcessing = serializationHandlers[0];
+            }
+
+            path = Path.GetFullPath("../../../ArchivedAdditionalProcessing/bin/Debug/netstandard2.0/ArchivedAdditionalProcessing.dll");
+            additionalProcessingHandlers = FunctionalPluginLoader.LoadSharshoonPlugin(path);
+            if (additionalProcessingHandlers != null && additionalProcessingHandlers.Count > 0)
+            {
+                sharshoonProcessing = additionalProcessingHandlers[0];
+            }
+
+            if(LoadSettings())
+            {
+                ApplySettings();
             }
             else
             {
-                isLoadedFunctionalPlugin = false;
+                astroService.Serializer = new SerializerXml();
+                astroService.Deserializer = new SerializerXml();
             }
             astroEditors = new Dictionary<int, EditObject>();//uid-editor
             astroHashEditors = new Dictionary<int, EditObject>();
@@ -58,7 +76,7 @@ namespace OOPLaba3
 
         bool LoadSettings()
         {
-            const int optionAmount = 5;
+            const int optionAmount = 6;
             FileStream fin;
             try
             {
@@ -80,6 +98,7 @@ namespace OOPLaba3
                 LoadFrom = (SerializationFormat)buffer[2];
                 LoadTo = (SerializationFormat)buffer[3];
                 additionalOptions = (SerializationOptions)buffer[4];
+                isArchive = (buffer[5] != 0);
             }
             catch
             {
@@ -92,54 +111,67 @@ namespace OOPLaba3
             return result;
         }
 
+
+
         void ApplySettings()
         {
-            
+            CompositeProcessing processing = new CompositeProcessing();
+            SpecialSerializer specialSerializer = new SpecialSerializer();
             if(SaveFrom == SaveTo)
             {
-                if(SaveFrom == SerializationFormat.Xml)
-                {
-                    astroService.Serializer = new SerializerXml();
-                }
-                else
-                {
-                    astroService.Serializer = new SerializerJson();
-                }
-            }
-            else
-            {
-                if(SaveTo == SerializationFormat.Json)
-                {
-                    astroService.Serializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
-                }
-                else
-                {
-                    astroService.Serializer = new SerializerXml();
-                }
-            }
+                 if(SaveFrom == SerializationFormat.Xml)
+                 {
+                     specialSerializer.Serializer = new SerializerXml();
+                 }
+                 else
+                 {
+                    specialSerializer.Serializer = new SerializerJson();
+                 }
+             }
+             else
+             {
+                 if(SaveTo == SerializationFormat.Json && eugeneProcessing != null)
+                 {
+                    specialSerializer.Serializer = new SerializerXml();
+                    processing.Add(eugeneProcessing);
+                    //astroService.Serializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
+                 }
+                 else
+                 {
+                    specialSerializer.Serializer = new SerializerXml();
+                 }
+             }
 
-            if (LoadFrom == LoadTo)
+            if(sharshoonProcessing != null)
             {
-                if (LoadFrom == SerializationFormat.Xml)
-                {
-                    astroService.Deserializer = new SerializerXml();
-                }
-                else
-                {
-                    astroService.Deserializer = new SerializerJson();
-                }
+                if (isArchive)
+                    processing.Add(new SharshoonAdapter(sharshoonProcessing));
             }
-            else
-            {
-                if (LoadTo == SerializationFormat.Json)
-                {
-                    astroService.Deserializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
-                }
-                else
-                {
-                    astroService.Deserializer = new SerializerXml();
-                }
-            }
+           /*  if (LoadFrom == LoadTo)
+             {
+                 if (LoadFrom == SerializationFormat.Xml)
+                 {
+                     astroService.Deserializer = new SerializerXml();
+                 }
+                 else
+                 {
+                     astroService.Deserializer = new SerializerJson();
+                 }
+             }
+             else
+             {
+                 if (LoadTo == SerializationFormat.Json)
+                 {
+                     astroService.Deserializer = new SpecialSerializer(serializationHandlers[0], (byte)additionalOptions);
+                 }
+                 else
+                 {
+                     astroService.Deserializer = new SerializerXml();
+                 }
+             }*/
+            astroService.Serializer = new SpecialSerializer(processing, (byte)additionalOptions);
+            astroService.Deserializer = new SpecialSerializer(processing, (byte)additionalOptions);
+
         }
 
         void EditNewAstroType(AstronomicalObject astroObj)

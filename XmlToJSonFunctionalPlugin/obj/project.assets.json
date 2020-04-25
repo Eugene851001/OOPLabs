@@ -26,9 +26,46 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "AdditionalProcessing/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/AdditionalProcessing.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AdditionalProcessing.dll": {}
+        }
+      },
+      "FunctionalPluginBase/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/FunctionalPluginBase.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FunctionalPluginBase.dll": {}
+        }
+      },
+      "SharshoonAdapter/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AdditionalProcessing": "1.0.0",
+          "FunctionalPluginBase": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SharshoonAdapter.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharshoonAdapter.dll": {}
+        }
+      },
       "Universe Editor/1.0.0": {
         "type": "project",
         "dependencies": {
+          "AdditionalProcessing": "1.0.0",
+          "FunctionalPluginBase": "1.0.0",
+          "SharshoonAdapter": "1.0.0",
           "UniverseMain": "1.0.0"
         },
         "compile": {
@@ -193,6 +230,21 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "AdditionalProcessing/1.0.0": {
+      "type": "project",
+      "path": "../AdditionalProcessing/AdditionalProcessing.csproj",
+      "msbuildProject": "../AdditionalProcessing/AdditionalProcessing.csproj"
+    },
+    "FunctionalPluginBase/1.0.0": {
+      "type": "project",
+      "path": "../FunctionalPluginBase/FunctionalPluginBase.csproj",
+      "msbuildProject": "../FunctionalPluginBase/FunctionalPluginBase.csproj"
+    },
+    "SharshoonAdapter/1.0.0": {
+      "type": "project",
+      "path": "../SharshoonAdapter/SharshoonAdapter.csproj",
+      "msbuildProject": "../SharshoonAdapter/SharshoonAdapter.csproj"
     },
     "Universe Editor/1.0.0": {
       "type": "project",

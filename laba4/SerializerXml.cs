@@ -9,8 +9,26 @@ using Universe;
 
 namespace UniverseEditor
 {
-    class SerializerXml: ISerialize
+    class SerializerXml: ISerialize, IStringSerialize
     {
+
+        public string SerializeString(object obj, Type[] types)
+        {
+            MemoryStream stream = new MemoryStream();
+            XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo), types);
+            formatter.Serialize(stream, obj);
+            string result = Encoding.ASCII.GetString(stream.ToArray());
+            return result;
+        }
+
+        public object DeserializeString(string source, Type[] types)
+        {
+            MemoryStream stream = new MemoryStream(Encoding.ASCII.GetBytes(source));
+            XmlSerializer formatter = new XmlSerializer(typeof(SaveInfo), types);
+            SaveInfo info = (SaveInfo)formatter.Deserialize(stream);
+            return info;
+        }
+
         public void Serialize(object obj, string path, Type[] types)
         {
             FileStream fout = new FileStream(path, FileMode.Create);
